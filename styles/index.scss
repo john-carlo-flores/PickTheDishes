@@ -7,29 +7,33 @@
   flex-direction: column;
   position: sticky;
   width: 100%;
-  height: 200px;
-  border: 6px solid black;
+  height: 150px;
+  border: 2px solid black;
   background: none;
-  top: 0;
 }
 
 .main-title {
-  border: 6px solid black;
+  font-size: 40px;
+  border: 2px solid black;
   background: none;
+
 }
 
 .main-info-bar {
+  top: 15%;
   display: flex;
-  border: 6px solid black;
+  border: 2px solid black;
   background: none;
+  margin-top: 4.5rem;
 }
 
 .main-info-bar p {
   margin: 0 1rem;
+
 }
 
 .main-order-button {
-  border: 6px solid black;
+  border: 2px solid black;
   background: none;
   display: flex;
   justify-content: center;
@@ -38,14 +42,41 @@
 }
 
 .order-now-button {
-
+  width: 200px;
 }
 
 .pick-dishes-name {
-  font-size: 10;
+  font-size: 10px;
 }
 
 .order-now-name {
-  font-size: 16;
+  font-size: 20px;
+
+}
+
+.about-us {
+  border: 2px solid black;
+  background: none;
+  display: flex;
+  justify-content: center;
+  @extend %padding-section;
+
+}
+
+.find-us {
+  border: 2px solid black;
+  background: none;
+  display: flex;
+  justify-content: center;
+  @extend %padding-section;
+
+}
+
+.footer-placeholder {
+  border: 2px solid black;
+  background: none;
+  display: flex;
+  justify-content: center;
+  @extend %padding-section;
 
 }
