@@ -1,6 +1,0 @@
-CREATE TABLE food_orders {
-  id PRIMARY SERIAL KEY NO NULL,
-  food_id INTEGER NOT NULL,
-  order_id INTEGER NOT NULL REFERENCES orders(orders_id) ON DELETE CASCADE,
-  quantity INTEGER NOT NULL
-}
