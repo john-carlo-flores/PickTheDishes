@@ -37,14 +37,14 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-// const ordersRoutes = require("./routes/orders");
-// const foodsRoutes = require("./routes/foods");
+const ordersRoutes = require("./routes/orders");
+const foodsRoutes = require("./routes/foods");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(db));
-// app.use("/orders", ordersRoutes(db));
-// app.use("/foods", foodsRoutes(db));
+app.use("/orders", ordersRoutes(db));
+app.use("/foods", foodsRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
 
