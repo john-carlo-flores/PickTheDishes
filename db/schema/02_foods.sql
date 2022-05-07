@@ -1,0 +1,22 @@
+/* foods and category */
+
+DROP TABLE IF EXISTS foods
+CASCADE;
+DROP TABLE IF EXISTS categories
+CASCADE;
+
+CREATE TABLE categories
+(
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE foods
+(
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  price SMALLINT NOT NULL,
+  description TEXT,
+  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
+  calories SMALLINT NOT NULL
+);
