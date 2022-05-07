@@ -1,7 +1,7 @@
 INSERT INTO categories
   (name)
 VALUES
-  ('Appetizes'),
+  ('Appetizers'),
   ('Soups'),
   ('Salads'),
   ('Signature Thai'),
