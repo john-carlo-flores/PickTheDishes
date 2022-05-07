@@ -1,23 +1,42 @@
+@use 'variables';
+
 .main-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  border: 2px solid red;
+  flex-direction: column;
+  position: sticky;
+  width: 100%;
+  height: 200px;
+  border: 6px solid black;
+  background: none;
+  top: 0;
 }
 
 .main-title {
-  border: 2px solid red;
-
+  border: 6px solid black;
+  background: none;
 }
 
 .main-info-bar {
-  border: 2px solid red;
+  display: flex;
+  border: 6px solid black;
+  background: none;
+}
 
+.main-info-bar p {
+  margin: 0 1rem;
 }
 
 .main-order-button {
-  border: 2px solid red;
+  border: 6px solid black;
+  background: none;
+  display: flex;
+  justify-content: center;
+  @extend %padding-section;
 
 }
 
+.order-now-button {
+
+}
