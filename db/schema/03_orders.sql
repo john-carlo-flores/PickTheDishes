@@ -1,5 +1,3 @@
--- Drop and recreate Widgets table (Example)
-
 DROP TABLE IF EXISTS orders CASCADE;
 
 CREATE TABLE orders (
