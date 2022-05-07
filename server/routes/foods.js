@@ -16,7 +16,9 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         const categories = data.rows;
-        res.json({ categories });
+        const templateVars = data.rows;
+        res.render("url_foods", templateVars);
+        // res.json({ categories });
       })
       .catch(err => {
         res
