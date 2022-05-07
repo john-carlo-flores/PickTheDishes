@@ -40,13 +40,13 @@ const usersRoutes = require("./routes/users");
 const ordersRoutes = require("./routes/orders");
 const foodsRoutes = require("./routes/foods");
 
+// Note: mount other resources here, using the same pattern above
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(db));
 app.use("/orders", ordersRoutes(db));
 app.use("/foods", foodsRoutes(db));
-
-// Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
