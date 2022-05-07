@@ -7,6 +7,7 @@ const sassMiddleware = require("../lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const path = require('path');
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -25,23 +26,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   "/styles",
   sassMiddleware({
-    source: __dirname + "../styles",
-    destination: __dirname + "../public/styles",
+    source: __dirname + "/../styles",
+    destination: __dirname + "/../public/styles",
     isSass: false, // false => scss, true => sass
   })
 );
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+// const ordersRoutes = require("./routes/orders");
+// const foodsRoutes = require("./routes/foods");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+app.use("/users", usersRoutes(db));
+// app.use("/orders", ordersRoutes(db));
+// app.use("/foods", foodsRoutes(db));
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
