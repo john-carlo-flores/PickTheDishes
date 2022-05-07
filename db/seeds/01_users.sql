@@ -1,4 +1,8 @@
--- Users table seeds here (Example)
+INSERT INTO roles (id, name) VALUES (1, 'customer');
+INSERT INTO roles (id, name) VALUES (2, 'owner');
+INSERT INTO roles (id, name) VALUES (3, 'staff');
+
+
 INSERT INTO users (name, email password, phone, instagram, role_id) VALUES ('Paulie Creagh', 'pcreagh0@simplemachines.org', 'password', '770-877-7891', 'pcreagh0', 2);
 INSERT INTO users (name, email password, phone, instagram, role_id) VALUES ('Bari Figgess', 'bfiggess1@jiathis.com', 'password', '377-115-2072', null, 1);
 INSERT INTO users (name, email password, phone, instagram, role_id) VALUES ('Salvador McCallam', 'smccallam2@wsj.com', 'password', '299-211-3776', 'smccallam2', 1);
@@ -12,3 +16,5 @@ INSERT INTO users (name, email password, phone, instagram, role_id) VALUES ('Syb
 # Rows:
 10
 ​
+
+
