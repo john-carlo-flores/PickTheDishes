@@ -27,7 +27,8 @@ module.exports = (db) => {
           }
         }
 
-        const templateVars = { foods: foods, categories: categories };
+        // !!!!!!! need to work on roles_id !!!!!!!!!
+        const templateVars = { foods: foods, categories: categories, roles_id: 2 };
         res.render("foods", templateVars);
         // res.json({ foods });
       })
