@@ -58,10 +58,19 @@
   border: 2px solid black;
   background: none;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   @extend %padding-section;
 
 }
+
+.about-us-text {
+  border: 2px solid black;
+  background: none;
+  width: 30rem;
+  height: 30rem;
+}
+
 
 .get-directions {
   display: flex;
@@ -96,3 +105,4 @@
   @extend %padding-section;
 
 }
+
