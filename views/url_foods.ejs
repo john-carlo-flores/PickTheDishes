@@ -21,7 +21,7 @@
     <header><%- include('partials/header.ejs'); %></header>
     <div class="order-container">
       <div class="row">
-        <div class="col order-section">
+        <div class="col order-section categories">
           <h2>Categories</h2>
           <ul>
             <li><a href="#">Appetizers</a></li>
@@ -33,14 +33,19 @@
           </ul>
         </div>
         <div class="col-6 order-section">
-          <% for(let food of foods) {%>
-          <div class="food">
-            <img src="" alt="">
-            <h4><%= food.name %></h4>
-            <p><%= food.price %></p>
-            <p><%= food.description %></p>
-          </div>
-          <% } %>
+          <% for(let category of categories) {%>
+            <h3><%= category %></h3>
+            <% for(let food of foods) {
+              if (food.category === category) {%>
+              <div class="food">
+                <img src="" alt="">
+                <h4><%= food.name %></h4>
+                <p><%= food.price %></p>
+                <p><%= food.description %></p>
+              </div>
+            <% }} %>
+            <% } %>
+
         </div>
         <div class="col order-section">
           3 of 3
