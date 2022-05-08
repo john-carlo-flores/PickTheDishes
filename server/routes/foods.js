@@ -11,13 +11,24 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM foods`;
-    console.log(query);
+    let query = `SELECT foods.*, categories.name as category
+    FROM foods
+      JOIN categories ON categories.id = category_id;`;
+    // console.log(query);
     db.query(query)
       .then(data => {
         const foods = data.rows;
-        const templateVars = { foods: foods };
-        res.render("url_foods", templateVars);
+
+        // get category from data
+        const categories = [];
+        for (let food of foods) {
+          if (!categories.includes(food.category)) {
+            categories.push(food.category)
+          }
+        }
+
+        const templateVars = { foods: foods, categories: categories };
+        res.render("foods", templateVars);
         // res.json({ foods });
       })
       .catch(err => {
