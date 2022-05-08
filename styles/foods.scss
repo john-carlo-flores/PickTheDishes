@@ -5,3 +5,9 @@
 .food {
   border: 1px black solid;
 }
+
+.categories {
+  position: sticky;
+  align-self: flex-start;
+  top: 10vh;
+}
