@@ -13,5 +13,5 @@ CREATE TABLE users (
   password varchar(255) NOT NULL,
   phone varchar(255) NOT NULL,
   instagram varchar(255),
-  role_id INTEGER REFERENCES roles(id)
+  role_id INTEGER NOT NULL REFERENCES roles(id) ON DELETE CASCADE
 );

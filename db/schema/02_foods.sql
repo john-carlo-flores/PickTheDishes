@@ -11,6 +11,6 @@ CREATE TABLE foods (
   name VARCHAR(255) NOT NULL,
   price SMALLINT NOT NULL,
   description TEXT,
-  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
+  category_id INTEGER NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
   calories SMALLINT NOT NULL
 );
