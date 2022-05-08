@@ -116,7 +116,7 @@
   flex-direction: column;
   background-color: grey;
   width: 100vw;
-  height: 650px;
+  height: 750px;
   border: 0px solid black;
   background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
   p {
@@ -125,6 +125,7 @@
     color: white;
 }
 }
+
 
 .open-hours {
   display: flex;
@@ -144,9 +145,28 @@
 .open-hours-time {
   display: flex;
   margin: -1rem 0;
-  flex-direction: column;
+  flex-direction: row;
   border: 0px solid black;
   color: white;
+  margin: 1em;
 
+
+}
+
+.hours-container {
+  display: flex;
+  flex-direction: column;
+  border: 0px solid black;
+
+  p {
+
+    border: 0px solid black;
+    height: 2.70rem;
+  }
+  table {
+    padding-bottom: 4rem 0;
+    border: 0px solid black;
+
+  }
 }
 
