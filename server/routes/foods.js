@@ -28,7 +28,7 @@ module.exports = (db) => {
         }
 
         const templateVars = { foods: foods, categories: categories };
-        res.render("url_foods", templateVars);
+        res.render("foods", templateVars);
         // res.json({ foods });
       })
       .catch(err => {
