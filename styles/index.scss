@@ -10,12 +10,14 @@
   height: 300px;
   border: 0px solid black;
   background: none;
+
 }
 
 .main-title {
   font-size: 80px;
   border: 0px solid black;
   background: none;
+  color: white;
 
 }
 
@@ -29,12 +31,15 @@
   p {
     margin: 0 1rem;
     font-size: 30px;
+    color: white;
 
   }
 
   a {
     margin: 0 1rem;
     font-size: 30px;
+    color: white;
+    text-decoration: none;
 
   }
 }
@@ -47,6 +52,8 @@
   display: flex;
   justify-content: center;
   height: 250px;
+  background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
+
 
   @extend %padding-section;
 
@@ -57,6 +64,8 @@
   width: 300px;
   height: 100px;
   border: 0px solid black;
+  border-radius: 14px;
+  background-color: #F79F79;
 
 
 }
@@ -66,12 +75,15 @@
   margin-left: -5rem;
   font-size: 20px;
   border: 0px solid black;
+  color: white;
+
 }
 
 .order-now-name {
   font-size: 40px;
   border: 0px solid black;
   margin-top: -1.50rem;
+  color: white;
 
 }
 
@@ -85,6 +97,7 @@
 
 .about-us-title {
   font-size: 60px;
+  color: white;
 }
 
 .about-us-text {
@@ -93,6 +106,7 @@
   width: 60rem;
   height: 30rem;
   font-size: 20px;
+  color: white;
 }
 
 
@@ -101,24 +115,29 @@
   align-items: center;
   flex-direction: column;
   background-color: grey;
-
+  width: 100vw;
+  height: 750px;
   border: 0px solid black;
-
+  background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
   p {
-    justify-content: center;
     font-size: 30px;
-  }
+    border: 0px solid black;
+    color: white;
 }
+}
+
 
 .open-hours {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   border: 0px solid black;
-  width: 50rem;
+
 
     p {
-    font-size: 40px;
-    border: 0px solid black;
+      font-size: 30px;
+      border: 0px solid black;
+      margin: 1rem;
+      color: white;
   }
 }
 
@@ -126,13 +145,28 @@
 .open-hours-time {
   display: flex;
   margin: -1rem 0;
+  flex-direction: row;
+  border: 0px solid black;
+  color: white;
+  margin: 1em;
 
+
+}
+
+.hours-container {
+  display: flex;
   flex-direction: column;
   border: 0px solid black;
 
-    p {
+  p {
+
     border: 0px solid black;
-    font-size: 20px;
+    height: 2.70rem;
+  }
+  table {
+    padding-bottom: 4rem 0;
+    border: 0px solid black;
+
   }
 }
 
