@@ -9,11 +9,25 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+  router.get("/login/:id", (req, res) => {
+    db.query(`SELECT * FROM users WHERE id = $1;`, [req.params.id])
+
       .then(data => {
         const users = data.rows;
-        res.json({ users });
+        if (users.length <= 0) {
+          return res.status(400).send('User doesnt exist. Go <a href="/">Back</a>');
+        }
+
+        const roleID = data.rows[0].role_id;
+        req.session.role_id = roleID;
+
+        //if customer
+        if (roleID === 1) {
+          return res.redirect('/foods');
+        }
+
+        //if owner/staff goes to orders
+        res.redirect('/orders');
       })
       .catch(err => {
         res
@@ -21,5 +35,11 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.post('/logout', (res, req) => {
+    req.session = null;
+    res.redirect('/foods');
+  });
+
   return router;
 };
