@@ -10,5 +10,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  padding-top: 2rem;
+    a {
+      text-decoration: none;
+    }
 };
+
+.login-button {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100vw;
+  height: 40px;
+  background-color: grey;
+  color: white;
+  position: fixed;
+  right: 0;
+  top: 0;
+  font-size: 20px;
+}
