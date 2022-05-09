@@ -5,9 +5,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PickTheDishes</title>
+
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/orders.css" />
 </head>
 <body>
   <header><%- include('partials/_header.ejs'); %></header>
-
+  <div class="content">
+    <% for (const state of orderStates) { %>
+      <div class="column" id="<%= state.toLowerCase() %>">
+        <span><%= state %></span>
+        <div class="orders">
+          <% for (const order of orders) { %>
+            <div class="order">
+              <span class="header">
+                <span class="name"><%= order.name %></span>
+                <span class="order-id"><%= order.order_id %></span>
+              </span>
+              <span class="footer">
+                <span class="start-time"><%= order.created_date.toLocaleTimeString('en-US') %></span>
+                <span class="end-time"><%= (order.pickup_time.getTime() - order.created_date.getTime()) / 1000 %></span>
+              </span>
+            </div>
+          <% } %>
+        </div>
+      </div>
+     <% } %>
+  </div>
 </body>
 </html>

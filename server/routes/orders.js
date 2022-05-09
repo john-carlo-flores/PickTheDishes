@@ -10,10 +10,11 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM orders;`)
+    db.getAllOrdersNotPickedUp()
       .then(data => {
-        const orders = data.rows;
-        res.render('orders', { orders });
+        const orderStates = ['Pending', 'Preparing', 'Ready for Pickup'];
+        const templateVars = { orders: data, orderStates};
+        res.render('orders', templateVars);
       })
       .catch(err => {
         res

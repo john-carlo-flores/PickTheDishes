@@ -1,0 +1,16 @@
+.content {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.column span {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.orders {
+  border: 1px solid black;
+  width: 25vw;
+  height: 80vh;
+}
