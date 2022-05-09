@@ -9,7 +9,7 @@
   width: 100%;
   height: 300px;
   border: 0px solid black;
-  background: none;
+  background-image: url("https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
 
 
 }
@@ -48,7 +48,7 @@
   display: flex;
   justify-content: center;
   height: 250px;
-  background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
+  background-image: url("https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80");
 
 
   @extend %padding-section;
@@ -61,7 +61,7 @@
   height: 100px;
   border: 0px solid black;
   border-radius: 14px;
-  background-color: #F79F79;
+  background-color: red;
 
 
 }
@@ -87,7 +87,7 @@
 
 .about-us {
   border: 0px solid black;
-  background: none;
+  background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -118,13 +118,14 @@
   width: 100vw;
   height: 750px;
   border: 0px solid black;
-  background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
+  background-image: url("https://images.unsplash.com/photo-1617093727343-374698b1b08d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
   .find-us {
     font-size: 60px;
     border: 0px solid black;
     color: white;
     font-family: 'Radio Canada', sans-serif;
     margin: 2rem 0;
+
   }
 
   .address {
@@ -158,6 +159,12 @@
   border: 0px solid black;
   color: white;
   margin: 1em;
+  color: white;
+  text-shadow:
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
 
 
 }
