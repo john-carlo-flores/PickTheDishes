@@ -8,6 +8,13 @@
     <!-- internal css file -->
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/foods.css" />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Passion+One&family=Radio+Canada:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -23,31 +30,33 @@
       <div class="order-section categories">
         <h2>Categories</h2>
         <ul>
-          <li><a href="#">Appetizers</a></li>
-          <li><a href="#">Soup</a></li>
-          <li><a href="#">Salads</a></li>
-          <li><a href="#">Signature</a></li>
-          <li><a href="#">Vegan</a></li>
-          <li><a href="#">Drinks</a></li>
+          <li><a href="#Appetizers">Appetizers</a></li>
+          <li><a href="#Soups">Soups</a></li>
+          <li><a href="#Salads">Salads</a></li>
+          <li><a href="#Signature Thai">Signature Thai</a></li>
+          <li><a href="#Vegan">Vegan</a></li>
+          <li><a href="#Drinks">Drinks</a></li>
         </ul>
       </div>
-      <div class="order-section">
+      <div class="order-section food-lists">
         <% for(let category of categories) {%>
-        <h3><%= category %></h3>
+        <h3 id="<%= category %>"><%= category %></h3>
         <% for(let food of foods) { if (food.category === category) {%>
-        <div class="food">
-          <img src="" alt="" />
+        <div class="food" id="<%= food.id %>">
           <h4><%= food.name %></h4>
-          <p><%= food.price %></p>
-          <p><%= food.description %></p>
+          <p>Price : $ <%= food.price %></p>
         </div>
         <% }} %> <% } %>
         <!-- modal -->
         <div class="modal">
-          <div class="modal-content">
-            <p>Decide your order quantity</p>
-            <a href="#0" class="close">Close</a>
+          <div class="modal-content"></div>
+          <div class="quantity-btn">
+            <button class="minus">-</button>
+            <input type="text" value="1" />
+            <button class="plus">+</button>
           </div>
+          <button id="add">Add</button>
+          <button id="close">Close</button>
         </div>
       </div>
       <div class="order-section cart">this is cart</div>

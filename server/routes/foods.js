@@ -6,6 +6,7 @@
  */
 
 const express = require('express');
+const { json } = require('express/lib/response');
 const router  = express.Router();
 
 module.exports = (db) => {
@@ -19,11 +20,36 @@ module.exports = (db) => {
             categories.push(food.category)
           }
         }
+  // !!!!!!! need to work on roles_id !!!!!!!!!
+        // use cookies that store roles_id
+        const role_id = 2
+        const templateVars = { foods: foods, categories: categories, roles_id: role_id };
+        // res.header('token', JSON.stringify({ token: 'token' }));
 
-        // !!!!!!! need to work on roles_id !!!!!!!!!
-        const templateVars = { foods: foods, categories: categories, roles_id: 2 };
-        res.render("foods", templateVars);
-        // res.json({ foods });
+        res.render("foods", templateVars)
+        // res.json(foods);
+
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.get("/:id", (req, res) => {
+    console.log(req.params.id);
+    let query = `SELECT foods.*, categories.name as category
+    FROM foods
+      JOIN categories ON categories.id = category_id
+      WHERE foods.id = $1;`;
+    // console.log(query);
+    db.query(query,[req.params.id])
+      .then(data => {
+        const foods = data.rows[0];
+        // console.log(foods);
+        res.json(foods);
+
       })
       .catch(err => {
         res
