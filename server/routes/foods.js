@@ -39,17 +39,10 @@ module.exports = (db) => {
 
   router.get("/:id", (req, res) => {
     console.log(req.params.id);
-    let query = `SELECT foods.*, categories.name as category
-    FROM foods
-      JOIN categories ON categories.id = category_id
-      WHERE foods.id = $1;`;
-    // console.log(query);
-    db.query(query,[req.params.id])
-      .then(data => {
-        const foods = data.rows[0];
-        // console.log(foods);
-        res.json(foods);
 
+    db.getFoodDetailsWithId(req.params.id)
+      .then(data => {
+        res.json(data);
       })
       .catch(err => {
         res

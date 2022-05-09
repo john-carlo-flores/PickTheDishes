@@ -37,9 +37,39 @@ module.exports = {
 
     return pool
       .query(queryString)
-      .then(data => {
-        const foods = data.rows;
+      .then(res => {
+        const foods = res.rows;
         return foods || null;
+      })
+      .catch(err => {
+        console.log('Error:', err.stack);
+      });
+  },
+
+  getFoodDetailsWithId: (id) => {
+    let queryString = `
+      SELECT foods.*, categories.name as category
+      FROM foods
+      JOIN categories ON categories.id = category_id
+      WHERE foods.id = $1;`;
+
+    return pool
+      .query(queryString, id)
+      .then(res => {
+        return res.rows[0] || null;
+      })
+      .catch(err => {
+        console.log('Error:', err.stack);
+      });
+  },
+
+  /// USERS
+
+  getUserWithId: (id) => {
+    return pool
+      .query(`SELECT * FROM users WHERE id = $1;`, [id])
+      .then(res => {
+        return res.rows || null;
       })
       .catch(err => {
         console.log('Error:', err.stack);
