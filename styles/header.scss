@@ -11,6 +11,15 @@
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
+    div {
+      display: flex;
+      justify-content: center;
+      border-bottom: 3px solid black;
+      width: 100vw;
+        h1 {
+          padding: 2rem;
+        }
+    }
     a {
       text-decoration: none;
     }
