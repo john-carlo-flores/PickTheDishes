@@ -11,13 +11,15 @@
   border: 0px solid black;
   background: none;
 
+
 }
 
 .main-title {
-  font-size: 80px;
+  font-size: 90px;
   border: 0px solid black;
   background: none;
   color: white;
+  font-family: 'Yellowtail', cursive;
 
 }
 
@@ -28,18 +30,12 @@
   background: none;
   margin-top: 4.5rem;
 
-  p {
-    margin: 0 1rem;
-    font-size: 30px;
-    color: white;
-
-  }
-
   a {
     margin: 0 1rem;
     font-size: 30px;
     color: white;
     text-decoration: none;
+    font-family: 'Radio Canada', sans-serif;
 
   }
 }
@@ -76,6 +72,7 @@
   font-size: 20px;
   border: 0px solid black;
   color: white;
+  font-family: 'Fjalla One', sans-serif;
 
 }
 
@@ -84,6 +81,7 @@
   border: 0px solid black;
   margin-top: -1.50rem;
   color: white;
+  font-family: 'Radio Canada', sans-serif;
 
 }
 
@@ -98,6 +96,7 @@
 .about-us-title {
   font-size: 60px;
   color: white;
+  font-family: 'Radio Canada', sans-serif;
 }
 
 .about-us-text {
@@ -107,6 +106,7 @@
   height: 30rem;
   font-size: 20px;
   color: white;
+  font-family: 'Radio Canada', sans-serif;
 }
 
 
@@ -119,11 +119,20 @@
   height: 750px;
   border: 0px solid black;
   background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
-  p {
-    font-size: 30px;
+  .find-us {
+    font-size: 60px;
     border: 0px solid black;
     color: white;
-}
+    font-family: 'Radio Canada', sans-serif;
+    margin: 2rem 0;
+  }
+
+  .address {
+    font-size: 20px;
+    border: 0px solid black;
+    color: white;
+    font-family: 'Radio Canada', sans-serif;
+  }
 }
 
 
@@ -131,13 +140,13 @@
   display: flex;
   flex-direction: column;
   border: 0px solid black;
-
+  padding-left: 11rem;
 
     p {
-      font-size: 30px;
+      font-size: 20px;
       border: 0px solid black;
-      margin: 1rem;
       color: white;
+      font-family: 'Radio Canada', sans-serif;
   }
 }
 
@@ -157,15 +166,21 @@
   display: flex;
   flex-direction: column;
   border: 0px solid black;
+  font-family: 'Radio Canada', sans-serif;
+  padding-left: 4rem;
 
   p {
-
     border: 0px solid black;
     height: 2.70rem;
+    margin-bottom: 0;
   }
   table {
     padding-bottom: 4rem 0;
     border: 0px solid black;
+
+    .closed {
+      text-align: center;
+    }
 
   }
 }
