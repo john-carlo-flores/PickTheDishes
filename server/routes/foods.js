@@ -8,17 +8,10 @@
 const express = require('express');
 const router  = express.Router();
 
-
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT foods.*, categories.name as category
-    FROM foods
-      JOIN categories ON categories.id = category_id;`;
-    // console.log(query);
-    db.query(query)
-      .then(data => {
-        const foods = data.rows;
-
+    db.getFoodsWithCategories()
+      .then(foods => {
         // get category from data
         const categories = [];
         for (let food of foods) {

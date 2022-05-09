@@ -21,8 +21,25 @@ module.exports = {
     return pool
       .query(queryString)
       .then(res => {
-        console.log(res.rows);
         return res.rows || null;
+      })
+      .catch(err => {
+        console.log('Error:', err.stack);
+      });
+  },
+
+  /// FOODS
+
+  getFoodsWithCategories: () => {
+    let queryString = `SELECT foods.*, categories.name as category
+    FROM foods
+    JOIN categories ON categories.id = category_id;`;
+
+    return pool
+      .query(queryString)
+      .then(data => {
+        const foods = data.rows;
+        return foods || null;
       })
       .catch(err => {
         console.log('Error:', err.stack);
