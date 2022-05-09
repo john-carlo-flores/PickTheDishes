@@ -1,5 +1,5 @@
 INSERT INTO orders
-  (user_id, created_date, is_paid, is_notified, is_ready, pickup_time)
+  (user_id, created_date, is_paid, is_notified, is_ready, is_complete, pickup_time)
 VALUES
   (2,  '2022-04-11 20:37:13', false, false, false, false, '2022-04-11 20:57:17'),
   (2,  '2022-04-30 11:58:50', true,  false, false, false, '2022-04-30 12:15:52'),
