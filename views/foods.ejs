@@ -8,6 +8,13 @@
     <!-- internal css file -->
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/foods.css" />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Passion+One&family=Radio+Canada:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -31,19 +38,24 @@
           <li><a href="#Drinks">Drinks</a></li>
         </ul>
       </div>
-      <div class="order-section">
+      <div class="order-section food-lists">
         <% for(let category of categories) {%>
         <h3 id="<%= category %>"><%= category %></h3>
         <% for(let food of foods) { if (food.category === category) {%>
         <div class="food" id="<%= food.id %>">
           <h4><%= food.name %></h4>
-          <p><%= food.price %></p>
-          <p><%= food.description %></p>
+          <p>Price : $ <%= food.price %></p>
         </div>
         <% }} %> <% } %>
         <!-- modal -->
         <div class="modal">
           <div class="modal-content"></div>
+          <div class="quantity-btn">
+            <button class="minus">-</button>
+            <input type="text" value="1" />
+            <button class="plus">+</button>
+          </div>
+          <button id="add">Add</button>
           <button id="close">Close</button>
         </div>
       </div>

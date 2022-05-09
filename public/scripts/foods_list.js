@@ -25,6 +25,24 @@ $(() => {
     })
   });
 
+  // minus button for quantity
+  $('.minus').on('click', function() {
+    let $input = $(this).parent().find('input');
+    let count = parseInt($input.val())
+    count = count < 1 ? 1 : count - 1;
+    $input.val(count);
+    $input.change();
+  })
+
+  // plus button for quantity
+  $('.plus').on('click', function() {
+    let $input = $(this).parent().find('input');
+    let count = parseInt($input.val())
+    count = count < 1 ? 1 : count + 1;
+    $input.val(count);
+    $input.change();
+  })
+
   //close popup
   $("#close").on("click", function (event) {
     event.preventDefault();
