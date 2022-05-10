@@ -108,8 +108,11 @@ a {
   background: white;
   border-radius: 10px;
   display: flex;
+
+
   p {
-    margin: 10px
+    margin: 10px;
+
   }
 }
 
@@ -141,4 +144,17 @@ a {
 .checkout-button:hover {
   background-color: #e60000
 }
+
+.delete {
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  border: 0;
+}
+
+.delete:hover {
+  background-color: #d9d9d9;
+  border-radius: 4px;
+  border: 0;
+}
+
 
