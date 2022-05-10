@@ -34,10 +34,6 @@
   border-radius: 5px;
   background-color: white;
 
-  [draggable=true] {
-    cursor: move;
-  }
-
   .header {
     display: flex;
     flex-direction: column-reverse;
@@ -46,10 +42,6 @@
     width: 80%;
 
     .order-id {
-      position: relative;
-      align-self: end;
-      bottom: 0.5rem;
-      left: 3.5rem;
       font-size: 2rem;
     }
 
@@ -64,8 +56,12 @@
 
   .footer {
     display: flex;
-    justify-content: space-around;
     font-size: larger;
+
+    .start-time {
+      justify-self: flex-start;
+    }
+
   }
 }
 

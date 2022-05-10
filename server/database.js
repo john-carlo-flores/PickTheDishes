@@ -28,19 +28,29 @@ module.exports = {
       });
   },
 
-  updateOrderStateById: (id, state) => {
+  updateOrderStateAndPickupTimeById: (id, state, pickupTime) => {
     const queryString = `
       UPDATE orders
-      SET $1 = 'true'
+      SET ${state} = 'true', pickup_time = $1
       WHERE id = $2
-      RETURNING *
     `;
 
     return pool
-      .query(queryString, [state, id])
-      .then(res => {
-        return res.rows || null;
-      })
+      .query(queryString, [pickupTime, id])
+      .catch(err => {
+        console.log('Error:', err.stack);
+      });
+  },
+
+  updateOrderStateById: (id, state) => {
+    const queryString = `
+      UPDATE orders
+      SET ${state} = 'true'
+      WHERE id = $1
+    `;
+
+    return pool
+      .query(queryString, [id])
       .catch(err => {
         console.log('Error:', err.stack);
       });
