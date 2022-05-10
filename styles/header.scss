@@ -6,34 +6,24 @@
 };
 
 .navbar {
-  border: 1px black solid;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
   width: 100vw;
-
-    h1 {
-      padding: 2rem;
-      font-family: 'Fjalla One', sans-serif;
-      font-size: 40px;
-    }
-
+  background-image: url("https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
 
     a {
       text-decoration: none;
       font-family: 'Yellowtail', cursive;
       font-size: 60px;
+      color: white;
+      font-weight: 200;
     }
 };
 
 
-#title-container {
-  position: sticky;
-  justify-content: center;
-  top: 5.4vh;
-  width: 20vw;
-}
+
 
 .login-button {
   display: flex;
@@ -41,8 +31,10 @@
   align-items: center;
   width: 100vw;
   height: 40px;
-  background-color: ivory;
+  background-color: white;
   position: fixed;
+  top: 0;
+  z-index: 9999;
 
     div {
       display: flex;

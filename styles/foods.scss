@@ -8,13 +8,15 @@ body {
 }
 
 .order-section {
-  border: 1px black solid;
+
   padding: 20px 40px;
+
 
 }
 
 .food-lists {
- width: 50vw;
+  width: 50vw;
+
 }
 
 .food {
@@ -30,13 +32,37 @@ body {
   align-self: flex-start;
   top: 5.4vh;
   width: 20vw;
+  font-size: 20px ;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+li {
+  margin: 1rem;
+}
+
+a:hover {
+  color: red;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px ;
 }
 
 .cart {
   position: sticky;
   align-self: flex-start;
   top: 5.4vh;
-  width: 30vw;
+  width: 20vw;
+  text-decoration: none;
+  color: black;
+  font-size: 20px ;
+
 }
 
 /* The Modal (background) */
