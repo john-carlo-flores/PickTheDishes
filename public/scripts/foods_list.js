@@ -168,15 +168,16 @@ $(() => {
   // delete from the cart
   $('.cart-list').on('click', '.delete', function(event) {
     event.stopPropagation();
-    const modal = $(this).closest('.modal-background');
-    const $id = modal.find('.food-id').text();
-    console.log(orderItems);
-    console.log($id);
+    const food = $(this).closest('.food-in-cart')
+    const $id = food.find('.food-id').text();
+
     for (const item of orderItems) {
       if (item.id === $id) {
         const index = orderItems.indexOf(item);
-        console.log(index);
+        orderItems.splice(index, 1);
       }
     }
+    $('.cart-list').empty();
+    renderCartLists(orderItems);
   })
 });
