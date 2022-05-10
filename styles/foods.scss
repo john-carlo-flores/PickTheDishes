@@ -1,6 +1,7 @@
 body {
   font-family: 'Radio Canada', sans-serif;
   margin: 0;
+  background-color: #f2f2f2;
 }
 .order-container {
   display: flex;
@@ -20,7 +21,7 @@ body {
 }
 
 .food {
-  background: #f2f2f2;
+  background: white;
   border-radius: 10px;
   margin: 20px 0;
   padding: 10px 20px;
@@ -30,13 +31,18 @@ body {
 .categories {
   position: sticky;
   align-self: flex-start;
-  top: 5.4vh;
+  top: 10vh;
   width: 20vw;
-  font-size: 20px ;
+  background-color: white;
+  padding-left: 0;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  border-radius: 14px;
 }
 
 ul {
   list-style-type: none;
+  background-color: white;
 }
 
 
@@ -51,17 +57,20 @@ a:hover {
 a {
   text-decoration: none;
   color: black;
-  font-size: 20px ;
 }
 
 .cart {
   position: sticky;
   align-self: flex-start;
-  top: 5.4vh;
+  top: 10vh;
   width: 20vw;
   text-decoration: none;
   color: black;
-  font-size: 20px ;
+  font-size: 1.17empx ;
+  background-color: white;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  border-radius: 14px;
 
 }
 
@@ -86,7 +95,7 @@ a {
 
 /* Modal Content */
 .modal {
-  background-color: #fefefe;
+  background-color: white;;
   margin: auto;
   padding: 20px;
   border: none;
@@ -96,7 +105,7 @@ a {
 }
 
 .food-in-cart {
-  background: #f2f2f2;
+  background: white;
   border-radius: 10px;
   display: flex;
   p {
@@ -117,3 +126,14 @@ a {
   font-weight: bold;
 }
 
+.checkout-button {
+  margin-top: 2rem;
+  width: 100%;
+  height: 40px;
+  color: white;
+  background-color: red;
+  border-radius: 12px;
+  border: 0;
+  font-size: 18px;
+
+}
