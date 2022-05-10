@@ -50,11 +50,27 @@ module.exports = (db) => {
     const order_id = Number(req.params.id);
     const state = getUpdateOrderState('Preparing');
 
+    db.updateOrderStateById(order_id, state)
+      .then(() => {
+        //TODO: Send order ready for pickup to user
+        res.send('Order Ready for Pickup!');
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.post("/:id/complete", (req, res) => {
+    const order_id = Number(req.params.id);
+    const state = getUpdateOrderState('Ready for Pickup');
+
     console.log("/:id/ready", state);
 
     db.updateOrderStateById(order_id, state)
       .then(() => {
-        //TODO: Send order ready for pickup to user
+        res.send('Order Complete!');
       })
       .catch(err => {
         res
