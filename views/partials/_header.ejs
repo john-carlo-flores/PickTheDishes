@@ -17,11 +17,17 @@
     </div>
 
     <div>
-      <img class="country-img"src="https://www.clipartmax.com/png/full/153-1538428_canada-flag-canada-flag-round-png.png" height="20px" width="20px">
-      <img class="user-img"src="https://cdn-icons-png.flaticon.com/512/149/149071.png" height="20px" width="20px">
-      <p class="user-greeting">Hungry, Jason?</p>
-      <button class="login-button">Login</button>
-      <button class="logout-button">Logout</button>
+
+
+
+      <% if (!userID) { %>
+        <form method="POST" action="/users/login/"><button class="login-button">Login</button></form>
+      <% } else { %>
+        <img class="country-img"src="https://www.clipartmax.com/png/full/153-1538428_canada-flag-canada-flag-round-png.png" height="20px" width="20px">
+        <img class="user-img"src="https://cdn-icons-png.flaticon.com/512/149/149071.png" height="20px" width="20px">
+        <p class="user-greeting">Hungry, Jason?</p>
+        <form method="POST" action="users/logout"><button class="logout-button" type="submit">Logout</button></form>
+      <% } %>
     </div>
 
 </header>
