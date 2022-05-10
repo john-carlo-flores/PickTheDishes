@@ -6,42 +6,63 @@
 };
 
 .navbar {
-  border: 1px black solid;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
-
-
-    div {
-      display: flex;
-      justify-content: center;
-      border-bottom: 3px solid black;
-      width: 100vw;
-
-        h1 {
-          padding: 2rem;
-          font-family: 'Fjalla One', sans-serif;
-        }
-    }
+  width: 100vw;
+  background-image: url("https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
 
     a {
       text-decoration: none;
       font-family: 'Yellowtail', cursive;
+      font-size: 60px;
+      color: white;
+      font-weight: 200;
     }
 };
 
+
+
+
 .login-button {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
   width: 100vw;
   height: 40px;
-  background-color: grey;
-  color: white;
+  background-color: #f2f2f2;
   position: fixed;
-  right: 0;
   top: 0;
-  font-size: 20px;
-  font-family: 'Radio Canada', sans-serif;
+  z-index: 9999;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      font-family: 'Radio Canada', sans-serif;
+      color: black;
+      right: 0;
+      top: 0;
+      width: 180px;
+      padding: 0 1rem;
+      }
+
+      .header-logo {
+        display: flex;
+        justify-content: start;
+        width: 350px;
+
+        p {
+          padding-right: 1rem;
+          font-family: 'Fjalla One', sans-serif;
+        }
+
+        .pickup-option {
+          font-size: 14px;
+          font-family: 'Radio Canada', sans-serif;
+        }
+
+    }
 }

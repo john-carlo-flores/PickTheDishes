@@ -15,10 +15,12 @@
       href="https://fonts.googleapis.com/css2?family=Passion+One&family=Radio+Canada:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Yellowtail&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Yellowtail&display=swap"
+      rel="stylesheet"
+    />
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -32,7 +34,6 @@
     <header class><%- include('partials/_header.ejs'); %></header>
     <div class="order-container">
       <div class="order-section categories">
-        <h2>Categories</h2>
         <ul>
           <li><a href="#Appetizers">Appetizers</a></li>
           <li><a href="#Soups">Soups</a></li>
@@ -51,19 +52,42 @@
           <p>Price : $ <%= food.price %></p>
         </div>
         <% }} %> <% } %>
-        <!-- modal -->
-        <div class="modal">
-          <div class="modal-content"></div>
-          <div class="quantity-btn">
-            <button class="minus">-</button>
-            <input type="text" value="1" />
-            <button class="plus">+</button>
-          </div>
-          <button id="add">Add</button>
-          <button id="close">Close</button>
-        </div>
       </div>
-      <div class="order-section cart">this is cart</div>
+      <div class="order-section cart">
+        <h3>Your Order</h3>
+        <div class="cart-list">
+          <!-- dynamically created div will be added -->
+        </div>
+        <span>Total :</span><span id="total-price">0</span><br />
+        <button class="checkout-button">Checkout</button>
+      </div>
+    </div>
+    <!-- modal -->
+    <div class="modal-background add-modal hidden">
+      <div class="modal">
+        <div class="modal-content"></div>
+        <div class="quantity-btn">
+          <button class="minus">-</button>
+          <input type="text" value="1" />
+          <button class="plus">+</button>
+        </div>
+
+        <button type="submit" class="add">Add</button>
+        <button class="close">Close</button>
+      </div>
+    </div>
+    <!--update -->
+    <div class="modal-background update-modal hidden">
+      <div class="modal">
+        <div class="modal-content"></div>
+        <div class="quantity-btn">
+          <button class="minus">-</button>
+          <input type="text" value="1" />
+          <button class="plus">+</button>
+        </div>
+        <button type="submit" class="update">Update</button>
+        <button class="close">Close</button>
+      </div>
     </div>
 
     <!-- javascript -->
