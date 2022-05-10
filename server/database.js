@@ -28,6 +28,24 @@ module.exports = {
       });
   },
 
+  updateOrderStateById: (id, state) => {
+    const queryString = `
+      UPDATE orders
+      SET $1 = 'true'
+      WHERE id = $2
+      RETURNING *
+    `;
+
+    return pool
+      .query(queryString, [state, id])
+      .then(res => {
+        return res.rows || null;
+      })
+      .catch(err => {
+        console.log('Error:', err.stack);
+      });
+  },
+
   /// FOODS
 
   getFoodsWithCategories: () => {

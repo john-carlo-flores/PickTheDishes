@@ -24,6 +24,23 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.post("/:id/prepare", (req, res) => {
+    db.getAllOrdersNotPickedUp()
+      .then(orders => {
+        const orderStates = ['Pending', 'Preparing', 'Ready for Pickup'];
+        reformatOrderDetails(orders);
+
+        const templateVars = { orders, orderStates};
+        res.render('orders', templateVars);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };
 
@@ -31,7 +48,7 @@ const reformatOrderDetails = (orders) => {
   for (const order in orders) {
     //Format: Dates => Time Only
     orders[order].remaining_time = formatRemainingTime(Math.abs(orders[order].pickup_time - orders[order].created_date));
-    orders[order].created_date = formatTime(orders[order].created_date);
+    orders[order].start_time = formatTime(orders[order].created_date);
 
     if (orders[order].pickup_time) {
       orders[order].pickup_time = formatTime(orders[order].pickup_time);
@@ -62,7 +79,6 @@ const formatRemainingTime = (date) => {
 };
 
 const setOrderState = (order) => {
-  console.log(order);
   if (!order.is_paid) return order.state = 'pending';
   if (!order.is_notified) return order.state = 'preparing';
   if (!order.is_ready) return order.state = 'ready for pickup';
