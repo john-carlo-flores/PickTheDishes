@@ -11,7 +11,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
-
+  width
 
     div {
       display: flex;
@@ -22,26 +22,61 @@
         h1 {
           padding: 2rem;
           font-family: 'Fjalla One', sans-serif;
+          font-size: 40px;
         }
     }
 
     a {
       text-decoration: none;
       font-family: 'Yellowtail', cursive;
+      font-size: 40px;
     }
 };
 
+
+#title-container {
+  position: sticky;
+  justify-content: center;
+  top: 5.4vh;
+  width: 20vw;
+}
+
 .login-button {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
   width: 100vw;
   height: 40px;
-  background-color: grey;
-  color: white;
+  background-color: ivory;
   position: fixed;
-  right: 0;
-  top: 0;
-  font-size: 20px;
-  font-family: 'Radio Canada', sans-serif;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      font-family: 'Radio Canada', sans-serif;
+      color: black;
+      right: 0;
+      top: 0;
+      width: 220px;
+      padding: 0 1rem;
+      }
+
+      .header-logo {
+        display: flex;
+        justify-content: start;
+        width: 350px;
+
+        p {
+          padding-right: 1rem;
+          font-family: 'Fjalla One', sans-serif;
+        }
+
+        .pickup-option {
+          font-size: 14px;
+          font-family: 'Radio Canada', sans-serif;
+        }
+
+    }
 }
