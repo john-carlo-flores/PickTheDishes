@@ -69,6 +69,7 @@
   box-shadow: 7px 6px 7px -2px rgba(0,0,0,0.85);
   -webkit-box-shadow: 7px 6px 7px -2px rgba(0,0,0,0.85);
   -moz-box-shadow: 7px 6px 7px -2px rgba(0,0,0,0.85);
+  background-color: #e60000
 }
 
 .pick-dishes-name {
@@ -96,6 +97,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  max-height: 100vh;
 }
 
 .about-us-title {
@@ -112,6 +114,7 @@
   font-size: 20px;
   color: white;
   font-family: 'Radio Canada', sans-serif;
+  max-height: 100vh;
 }
 
 
@@ -139,6 +142,17 @@
     color: white;
     font-family: 'Radio Canada', sans-serif;
   }
+
+  .map-responsive iframe{
+    min-width: 20vw;
+    max-width: 100vw;
+
+
+  }
+
+
+
+
 }
 
 
