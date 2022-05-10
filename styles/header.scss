@@ -10,5 +10,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  padding-top: 2rem;
+
+
+    div {
+      display: flex;
+      justify-content: center;
+      border-bottom: 3px solid black;
+      width: 100vw;
+
+        h1 {
+          padding: 2rem;
+          font-family: 'Fjalla One', sans-serif;
+        }
+    }
+
+    a {
+      text-decoration: none;
+      font-family: 'Yellowtail', cursive;
+    }
 };
+
+.login-button {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100vw;
+  height: 40px;
+  background-color: grey;
+  color: white;
+  position: fixed;
+  right: 0;
+  top: 0;
+  font-size: 20px;
+  font-family: 'Radio Canada', sans-serif;
+}

@@ -9,18 +9,10 @@ const express = require('express');
 const { json } = require('express/lib/response');
 const router  = express.Router();
 
-
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    console.log(req.body);
-    let query = `SELECT foods.*, categories.name as category
-    FROM foods
-      JOIN categories ON categories.id = category_id;`;
-    // console.log(query);
-    db.query(query)
-      .then(data => {
-        const foods = data.rows;
-
+    db.getFoodsWithCategories()
+      .then(foods => {
         // get category from data
         const categories = [];
         for (let food of foods) {
@@ -48,17 +40,10 @@ module.exports = (db) => {
   // click the food list, pop up modal and show only clicked food info
   router.get("/:id", (req, res) => {
     console.log(req.params.id);
-    let query = `SELECT foods.*, categories.name as category
-    FROM foods
-      JOIN categories ON categories.id = category_id
-      WHERE foods.id = $1;`;
-    // console.log(query);
-    db.query(query,[req.params.id])
-      .then(data => {
-        const foods = data.rows[0];
-        // console.log(foods);
-        res.json(foods);
 
+    db.getFoodDetailsWithId(req.params.id)
+      .then(data => {
+        res.json(data);
       })
       .catch(err => {
         res

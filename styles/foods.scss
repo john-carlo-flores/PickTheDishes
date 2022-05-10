@@ -1,8 +1,10 @@
 body {
   font-family: 'Radio Canada', sans-serif;
+  margin: 0;
 }
 .order-container {
   display: flex;
+  width: 100vw;
 }
 
 .order-section {
@@ -26,14 +28,14 @@ body {
 .categories {
   position: sticky;
   align-self: flex-start;
-  top: 10vh;
+  top: 5.4vh;
   width: 20vw;
 }
 
 .cart {
   position: sticky;
   align-self: flex-start;
-  top: 10vh;
+  top: 5.4vh;
   width: 30vw;
 }
 

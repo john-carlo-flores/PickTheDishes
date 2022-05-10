@@ -10,10 +10,8 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/login/:id", (req, res) => {
-    db.query(`SELECT * FROM users WHERE id = $1;`, [req.params.id])
-
-      .then(data => {
-        const users = data.rows;
+    db.getUserWithId(req.params.id)
+      .then(users => {
         if (users.length <= 0) {
           return res.status(400).send('User doesnt exist. Go <a href="/">Back</a>');
         }

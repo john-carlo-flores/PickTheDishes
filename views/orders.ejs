@@ -5,9 +5,48 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PickTheDishes</title>
+
+  <!-- External JS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Yellowtail&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/orders.css" />
+
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/jquery-ui.min.js"></script>
+
+  <!-- App JS -->
+  <script src="/scripts/order_events.js"></script>
+
 </head>
 <body>
   <header><%- include('partials/_header.ejs'); %></header>
-
+  <div class="content">
+    <% for (const state of orderStates) { %>
+      <div class="column" id="<%= state.toLowerCase() %>">
+        <h4><%= state %></h4>
+        <div class="orders">
+          <% for (const order of orders) { %>
+            <% if (order.state === state.toLowerCase()) { %>
+              <div class="order">
+                <div class="header">
+                  <span class="name"><%= order.abbrev_name %></span>
+                  <span class="order-id"><%= order.order_id %></span>
+                </div>
+                <div class="footer">
+                  <span class="start-time"><%= order.created_date %></span>
+                  <span class="end-time"><%= order.remaining_time %> mins</span>
+                </div>
+              </div>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+     <% } %>
+  </div>
 </body>
 </html>
