@@ -25,7 +25,7 @@
 
 
 
-.login-button {
+.info-header-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,9 +45,23 @@
       color: black;
       right: 0;
       top: 0;
-      width: 180px;
+      width: 320px;
       padding: 0 1rem;
+
+      .logout-button {
+        border: 0;
+        border-radius: 4px;
+        color: white;
+        background-color: red;
+        height: 30px;
+        width: 70px;
       }
+
+      .login-button {
+        @extend .logout-button;
+      }
+
+    }
 
       .header-logo {
         display: flex;
@@ -63,6 +77,5 @@
           font-size: 14px;
           font-family: 'Radio Canada', sans-serif;
         }
-
     }
 }
