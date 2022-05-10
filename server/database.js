@@ -54,7 +54,7 @@ module.exports = {
       WHERE foods.id = $1;`;
 
     return pool
-      .query(queryString, id)
+      .query(queryString, [id])
       .then(res => {
         return res.rows[0] || null;
       })
