@@ -57,8 +57,16 @@
         width: 70px;
       }
 
+      .logout-button:hover {
+        background-color: #e60000
+      }
+
       .login-button {
         @extend .logout-button;
+      }
+
+      .login-button:hover {
+        background-color: #e60000
       }
 
     }
