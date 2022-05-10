@@ -41,7 +41,9 @@
                 </div>
                 <div class="footer">
                   <span class="start-time"><%= order.start_time %></span>
-                  <span class="end-time"><%= order.remaining_time %> mins</span>
+                  <% if (order.remaining_time) { %>
+                    <span class="end-time"><%= order.remaining_time %> mins</span>
+                  <% } %>
                   <span hidden class="created-date"><%= order.created_date %></span>
                 </div>
               </div>
