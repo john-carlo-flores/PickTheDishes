@@ -11,25 +11,19 @@
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
-  width
+  width: 100vw;
 
-    div {
-      display: flex;
-      justify-content: center;
-      border-bottom: 3px solid black;
-      width: 100vw;
-
-        h1 {
-          padding: 2rem;
-          font-family: 'Fjalla One', sans-serif;
-          font-size: 40px;
-        }
+    h1 {
+      padding: 2rem;
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 40px;
     }
+
 
     a {
       text-decoration: none;
       font-family: 'Yellowtail', cursive;
-      font-size: 40px;
+      font-size: 60px;
     }
 };
 
@@ -59,7 +53,7 @@
       color: black;
       right: 0;
       top: 0;
-      width: 220px;
+      width: 180px;
       padding: 0 1rem;
       }
 
