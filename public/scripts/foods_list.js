@@ -20,10 +20,11 @@ $(() => {
     const createCartList = (data) => {
       const $foodInCart = `
         <div class="food-in-cart">
+          <p hidden class="food-id">${data.id}</p>
           <p>${data.quantity}</p>
           <p>${data.food}</p>
           <p>${data.price}</p>
-          <button>X</button>
+          <button class="delete">X</button>
         </div>
       `
       return $foodInCart;
@@ -90,21 +91,23 @@ $(() => {
   // add item to the cart
   $('.add').on('click', function() {
     // added food data to make food-in-cart
-    let $input = $(this).parent().find('input');
-    let quantity = $input.val();
-    let $food = $('.add-modal').find('.food-name').text();
-    let $price = $('.add-modal').find('.price').text();
-    let unitPrice = $price.split(" ")[1];
-    let sumPrice = unitPrice * quantity;
+    const $input = $(this).parent().find('input');
+    const quantity = $input.val();
+    const $food = $('.add-modal').find('.food-name').text();
+    const $price = $('.add-modal').find('.price').text();
+    const unitPrice = $price.split(" ")[1];
+    const sumPrice = unitPrice * quantity;
+    const $id = $('.add-modal').find('.food-id').text();
 
     // check if food is already exist in the array
     // change the quantity of the object
     // orderItems = [];
     const createItemObj = () => {
-    orderItem.food = $food;
-    orderItem.quantity = quantity;
-    orderItem.price = sumPrice;
-    orderItems.push(orderItem);
+      orderItem.id = $id;
+      orderItem.food = $food;
+      orderItem.quantity = quantity;
+      orderItem.price = sumPrice;
+      orderItems.push(orderItem);
     };
     let isAdded = false;
     let addedFood;
@@ -122,21 +125,6 @@ $(() => {
       createItemObj();
     }
 
-    // if (orderItems.length === 0) {
-    //   createItemObj();
-    // } else {
-    //   for (const item of orderItems) {
-    //     if ($food === item.food) {
-    //       item.quantity = quantity;
-    //       console.log('same: ', orderItems);
-    //     } else {
-    //       createItemObj();
-    //     }
-    //   }
-    // }
-
-    console.log('new: ', orderItems);
-
     $('.cart-list').empty();
     renderCartLists(orderItems);
     // empty object so new item can be made
@@ -148,10 +136,47 @@ $(() => {
 
   // change quantity in the cart
   $('.cart-list').on('click','.food-in-cart', function() {
-    const order = $(this);
-    const id = order.attr('id');
+    const $id = $(this).find('.food-id').text();
+    console.log($id);
+    showItem($id);
     $('.update-modal').removeClass('hidden');
   })
 
+  // update button will update quantity
+  $('.update').on('click', function() {
+    const modal = $(this).closest('.modal-background');
 
+    const $input = $(this).parent().find('input');
+    const quantity = $input.val();
+    const $id = modal.find('.food-id').text();
+    const $price = modal.find('.price').text();
+    const unitPrice = $price.split(" ")[1];
+
+    for (const item of orderItems) {
+      if (item.id === $id) {
+        item.quantity = quantity;
+        item.price = unitPrice * quantity;
+      }
+    }
+
+    $('.cart-list').empty();
+    renderCartLists(orderItems);
+
+    modal.addClass('hidden');
+  })
+
+  // delete from the cart
+  $('.cart-list').on('click', '.delete', function(event) {
+    event.stopPropagation();
+    const modal = $(this).closest('.modal-background');
+    const $id = modal.find('.food-id').text();
+    console.log(orderItems);
+    console.log($id);
+    for (const item of orderItems) {
+      if (item.id === $id) {
+        const index = orderItems.indexOf(item);
+        console.log(index);
+      }
+    }
+  })
 });
