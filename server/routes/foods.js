@@ -37,6 +37,7 @@ module.exports = (db) => {
       });
   });
 
+  // click the food list, pop up modal and show only clicked food info
   router.get("/:id", (req, res) => {
     console.log(req.params.id);
 
@@ -50,5 +51,11 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  // add food to the cart if add button clicked
+  router.post("/", (req, res) => {
+    console.log(req.body);
+  })
+
   return router;
 };

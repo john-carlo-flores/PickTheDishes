@@ -51,19 +51,46 @@
           <p>Price : $ <%= food.price %></p>
         </div>
         <% }} %> <% } %>
-        <!-- modal -->
-        <div class="modal">
-          <div class="modal-content"></div>
-          <div class="quantity-btn">
-            <button class="minus">-</button>
-            <input type="text" value="1" />
-            <button class="plus">+</button>
-          </div>
-          <button id="add">Add</button>
-          <button id="close">Close</button>
-        </div>
       </div>
-      <div class="order-section cart">this is cart</div>
+      <div class="order-section cart">
+        <p>Your Order</p>
+        <div class="cart-list">
+          <div class="food-in-cart" id="999">
+            <p>2</p>
+            <p>Food Name</p>
+            <p>Price</p>
+            <button>X</button>
+          </div>
+        </div>
+        <button>Checkout</button>
+      </div>
+    </div>
+    <!-- modal -->
+    <div class="modal-background add-modal hidden">
+      <div class="modal">
+        <div class="modal-content"></div>
+        <div class="quantity-btn">
+          <button class="minus">-</button>
+          <input type="text" value="1" />
+          <button class="plus">+</button>
+        </div>
+
+        <button type="submit" class="add">Add</button>
+        <button class="close">Close</button>
+      </div>
+    </div>
+    <!--update -->
+    <div class="modal-background update-modal hidden">
+      <div class="modal">
+        <div class="modal-content"></div>
+        <div class="quantity-btn">
+          <button class="minus">-</button>
+          <input type="text" value="1" />
+          <button class="plus">+</button>
+        </div>
+        <button type="submit" class="update">Update</button>
+        <button class="close">Close</button>
+      </div>
     </div>
 
     <!-- javascript -->
