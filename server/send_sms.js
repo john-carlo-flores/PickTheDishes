@@ -8,7 +8,7 @@ const client = require('twilio')(accountSid, authToken);
 
 client.messages
   .create({
-    body: 'Your Food Order is ready for pickup!',
+    body: 'Your Delicious Food Order is ready for pickup!',
     from: process.env.TWILIO_NUMBER,
     to: process.env.TEST_NUMBER
   })
