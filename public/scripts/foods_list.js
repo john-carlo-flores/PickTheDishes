@@ -30,8 +30,8 @@ $(() => {
       return $foodInCart;
     };
 
-    const renderCartLists = (itemArray) => {
-      for (const item of itemArray) {
+    const renderCartLists = (items) => {
+      for (const item of items) {
         const $cartList = createCartList(item);
         $('.cart-list').append($cartList);
       }
@@ -47,6 +47,15 @@ $(() => {
       $('.modal-content').empty();
       createModal(foods);
     })
+  }
+
+  const getTotal = (items) => {
+    let total = 0;
+    for (const item of items) {
+      total += item.price;
+    }
+    console.log(total);
+    $('#total-price').text(`${total}`);
   }
 
   // open popup
@@ -127,6 +136,7 @@ $(() => {
 
     $('.cart-list').empty();
     renderCartLists(orderItems);
+    getTotal(orderItems);
     // empty object so new item can be made
     orderItem = {};
 
@@ -161,6 +171,7 @@ $(() => {
 
     $('.cart-list').empty();
     renderCartLists(orderItems);
+    getTotal(orderItems);
 
     modal.addClass('hidden');
   })
@@ -179,5 +190,6 @@ $(() => {
     }
     $('.cart-list').empty();
     renderCartLists(orderItems);
+    getTotal(orderItems);
   })
 });
