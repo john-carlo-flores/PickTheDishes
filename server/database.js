@@ -69,7 +69,7 @@ module.exports = {
     return pool
       .query(`SELECT * FROM users WHERE id = $1;`, [id])
       .then(res => {
-        return res.rows || null;
+        return res.rows[0] || null;
       })
       .catch(err => {
         console.log('Error:', err.stack);
