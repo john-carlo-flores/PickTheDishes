@@ -31,16 +31,18 @@
         <h4><%= state %></h4>
         <div class="orders">
           <% for (const order of orders) { %>
-            <div class="order" draggable="true">
-              <div class="header">
-                <span class="name"><%= order.abbrev_name %></span>
-                <span class="order-id"><%= order.order_id %></span>
+            <% if (order.state === state.toLowerCase()) { %>
+              <div class="order">
+                <div class="header">
+                  <span class="name"><%= order.abbrev_name %></span>
+                  <span class="order-id"><%= order.order_id %></span>
+                </div>
+                <div class="footer">
+                  <span class="start-time"><%= order.created_date %></span>
+                  <span class="end-time"><%= order.remaining_time %> mins</span>
+                </div>
               </div>
-              <div class="footer">
-                <span class="start-time"><%= order.created_date %></span>
-                <span class="end-time"><%= order.remaining_time %> mins</span>
-              </div>
-            </div>
+            <% } %>
           <% } %>
         </div>
       </div>

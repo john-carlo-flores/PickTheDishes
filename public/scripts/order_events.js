@@ -1,17 +1,22 @@
 $(() => {
-  $('.orders').droppable({
-    opacity: '0.6',
-    revert: invalid,
-    containment: '.content',
-    cursor: move,
-    stack: orders
+  $('.order').draggable({
+    opacity: '0.7',
+    revert: 'invalid',
+    cursor: 'move',
+    helper: 'clone',
+    appendTo: '.content',
+    containment: '.content'
   });
+
   $('.orders').droppable({
     accept: '.order',
     drop: handleDropEvent
   });
+
 });
 
 const handleDropEvent = function(event , ui) {
-  ui.draggable.draggable( 'option', 'revert', false );
+  $(this).append(ui.draggable);
+
+
 }
