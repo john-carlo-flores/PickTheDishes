@@ -11,16 +11,16 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/login/:id", (req, res) => {
     db.getUserWithId(req.params.id)
-      .then(users => {
-        if (users.length <= 0) {
+      .then(user => {
+        if (user.length <= 0) {
           return res.status(400).send('User doesnt exist. Go <a href="/">Back</a>');
         }
 
-        const roleID = data.rows[0].role_id;
-        req.session.role_id = roleID;
+        //req.session.role_id = user.role_id;
+        req.session.user_id = user.user_id;
 
         //if customer
-        if (roleID === 1) {
+        if (user.role_id === 1) {
           return res.redirect('/foods');
         }
 
