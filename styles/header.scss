@@ -50,8 +50,12 @@
       color: black;
       right: 0;
       top: 0;
-      width: 270px;
+      width: auto;
       padding: 0 1rem;
+
+      * {
+        margin-right: 0.5rem;
+      }
 
       .logout-button {
         border: 0;
@@ -60,6 +64,7 @@
         background-color: red;
         height: 30px;
         width: 70px;
+        margin-right: 0;
       }
 
       .logout-button:hover {
@@ -67,9 +72,21 @@
         cursor: pointer;
       }
 
+      form {
+        display: flex;
+        justify-content: flex-end
+      }
+
+      .login-input {
+        width: 7%;
+        text-align: center;
+        border: 2px solid grey;
+        border-radius: 4px;
+      }
+
       .login-button {
         @extend .logout-button;
-        // margin-left: 12rem;
+        //margin-left: 12rem;
       }
 
       .login-button:hover {
@@ -92,6 +109,8 @@
         .pickup-option {
           font-size: 14px;
           font-family: 'Radio Canada', sans-serif;
+
+
         }
     }
 }

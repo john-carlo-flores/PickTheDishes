@@ -7,7 +7,6 @@
   flex-direction: column;
   position: sticky;
   width: 100%;
-  height: 300px;
   border: 0px solid black;
   background-image: url("https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
 
@@ -24,11 +23,9 @@
 }
 
 .main-info-bar {
-  top: 15%;
   display: flex;
   border: 0px solid black;
   background: none;
-  margin-top: 4.5rem;
 
   a {
     margin: 0 1rem;
@@ -36,6 +33,7 @@
     color: white;
     text-decoration: none;
     font-family: 'Radio Canada', sans-serif;
+    padding: 2rem 0;
 
   }
 
@@ -48,11 +46,10 @@
 
 .main-order-button {
   border: 0px solid black;
-  background-color: grey;
   display: flex;
   justify-content: center;
-  height: 250px;
-  background-image: url("https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80");
+  border-top: 3px solid white;
+  padding: 5vh;
 
 
   @extend %padding-section;
@@ -112,13 +109,13 @@
 
 .about-us-text {
   border: 0px solid black;
-  background: none;
+  background: rgba(0,0,0,0.3);
   width: 60rem;
-  height: 30rem;
   font-size: 20px;
   color: white;
   font-family: 'Radio Canada', sans-serif;
   max-height: 100vh;
+  border-radius: 6px;
 }
 
 
