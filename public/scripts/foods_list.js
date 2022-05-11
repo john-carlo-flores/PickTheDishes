@@ -12,7 +12,7 @@ $(() => {
           <p hidden class="food-id">${data.id}</p>
           <h3 class="food-name">${data.name}</h3>
           <p>${data.description}</p>
-          <p class="price">Price: ${data.price}</p>
+          <p class="price">$ ${data.price}</p>
     `)
     return $('.modal-content').append($modal);
   };
@@ -20,11 +20,15 @@ $(() => {
     const createCartList = (data) => {
       const $foodInCart = `
         <div class="food-in-cart">
-          <p hidden class="food-id">${data.id}</p>
-          <p>${data.quantity}</p>
-          <p>${data.food}</p>
-          <p>${data.price}</p>
-          <button class="delete">X</button>
+          <div>
+            <p hidden class="food-id">${data.id}</p>
+            <p>${data.quantity}</p>
+            <p>${data.food}</p>
+          </div>
+          <div>
+            <p>$${data.price}</p>
+            <button class="delete">X</button>
+          </div>
         </div>
       `
       return $foodInCart;
