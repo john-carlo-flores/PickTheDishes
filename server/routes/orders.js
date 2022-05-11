@@ -11,12 +11,14 @@ const moment = require('moment');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    const userID = req.session.user_id;
+
     db.getAllOrdersNotPickedUp()
       .then(orders => {
         const orderStates = ['Pending', 'Preparing', 'Ready for Pickup'];
         reformatOrderDetails(orders);
 
-        const templateVars = { orders, orderStates};
+        const templateVars = { orders, orderStates, userID};
         res.render('orders', templateVars);
       })
       .catch(err => {
@@ -65,8 +67,6 @@ module.exports = (db) => {
   router.post("/:id/complete", (req, res) => {
     const order_id = Number(req.params.id);
     const state = getUpdateOrderState('Ready for Pickup');
-
-    console.log("/:id/ready", state);
 
     db.updateOrderStateById(order_id, state)
       .then(() => {
