@@ -6,8 +6,10 @@
  */
 
 module.exports = function(router, db) {
+
   router.get("/", (req, res) => {
     const userID = req.session.user_id;
+    console.log(`userID in /foods: `, userID)
     console.log('/foods', req.session);
 
     db.getFoodsWithCategories()
@@ -20,8 +22,13 @@ module.exports = function(router, db) {
           }
         }
 
-        const templateVars = { foods, categories, userID};
-        res.render("foods", templateVars)
+        db.getUserWithId(userID)
+        .then( user => {
+          const templateVars = { foods, categories, userID, user};
+          res.render("foods", templateVars)
+        })
+
+
       })
       .catch(err => {
         res
