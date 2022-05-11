@@ -9,9 +9,12 @@ body {
 }
 
 .order-section {
-
   padding: 20px 40px;
 
+  .food-description p{
+    margin-top:0;
+    color: #595959;
+  }
 
 }
 
@@ -103,15 +106,47 @@ a {
   width: 40%;
   height: 25%;
 
+  .modal-content{
+
+    p.description-modal {
+      color: #595959;
+    }
+  }
+
   .quantity-btn {
     display: flex;
     justify-content: end;
-    height: 1.5rem;
+    height: 2rem;
+    align-items: end;
+
+    .add {
+      width: 3rem;
+      height: 1.5rem;
+    }
+
+    .plus {
+      margin-right: 1rem;
+      width: 2rem;
+      height: 1.5rem;
+      text-align: center;
+    }
+
+    .minus {
+      width: 2rem;
+      height: 1.5rem;
+      text-align: center;
+    }
 
     input {
-      width: 1rem;
       border: 0;
+      text-align: center;
+      width: 2rem;
+      height: 1.5rem;
+
     }
+
+
+
   }
 
   .close-div {
