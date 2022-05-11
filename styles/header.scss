@@ -2,7 +2,6 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: #95bf74;
 };
 
 .navbar {
@@ -15,7 +14,8 @@
   div {
 
     a:hover {
-      color: #e60000
+      color: #e60000;
+      cursor: pointer;
     }
   }
     a {
@@ -64,6 +64,7 @@
 
       .logout-button:hover {
         background-color: #e60000;
+        cursor: pointer;
       }
 
       .login-button {
@@ -73,6 +74,7 @@
 
       .login-button:hover {
         background-color: #e60000;
+        cursor: pointer;
       }
 
     }
