@@ -21,8 +21,11 @@ $(() => {
   });
 
   $('#modal-dialog').on('dialogclose', undoDropEvent);
+  $('.complete-order').on('click', completeOrder);
 
 });
+
+/// DROP EVENTS
 
 const handleDropEvent = function(event , ui) {
   const orderID = ui.draggable.find('.order-id').text();
@@ -56,7 +59,8 @@ const handleDropEvent = function(event , ui) {
 
 const undoDropEvent = function(event) {
   $(this).empty(); // Clear dialog window
-  console.log('undoDropEvent', !$('.content').data('submit'));
+
+  if ($('#modal-dialog').data('state') === 'complete') return;
 
   // On user Cancel/No append order back to original parent
   if (!$('.content').data('submit')) {
@@ -65,12 +69,18 @@ const undoDropEvent = function(event) {
   }
 };
 
+/// CLICK EVENTS
+
+const completeOrder = function(event) {
+  const orderID = $(this).closest('.order').find('.order-id').text();
+  fillModalWithCompletePrompt(orderID, $(this));
+  $('#modal-dialog').dialog('open');
+};
+
 /// DIALOG PROMPTS
 
 const fillModalWithTimePrompt = (date, id) => {
   const $modalForm = $(`
-    <input type="hidden" name="order-id" value="${id}">
-    <span hidden class="created-date">${date}</span>
     <label for="pickup-time">Enter time below (mins):</label>
     <input type="text" id="pickup-time" name="pickup-time">
   `);
@@ -80,14 +90,17 @@ const fillModalWithTimePrompt = (date, id) => {
   const $modalDialog = $("#modal-dialog");
   $modalDialog.append($modalForm);
   $modalDialog.dialog('option', 'title', 'Estimated Preparation Time');
+  $modalDialog.data('state', 'preparing');
 
   $modalDialog.dialog('option', 'buttons',
     {
       'OK': function() {
-        $.post(`/orders/${id}/prepare`, {
-          createdDate: $(this).find('.created-date').text(),
+        $.post(`/orders/${id}/prepare`,
+        {
+          createdDate: date,
           estimatedTime: $('#pickup-time').val()
-        }, function(estimatedTime) {
+        },
+        function(estimatedTime) {
           $endTime.text(estimatedTime);
           $('.content').data('$selectedOrder').find('.footer').append($endTime);
           $('.content').data('submit', 'ok');
@@ -101,20 +114,51 @@ const fillModalWithTimePrompt = (date, id) => {
   );
 };
 
-const fillModalWithReadyPrompt = (id) => {
-  const $modalForm = $(`
-    <input type="hidden" name="order-id" value="${id}">
-    <span>Are you sure order is ready?</span>
-  `);
+const fillModalWithReadyPrompt = (id, completeButton) => {
+  const $modalForm = $(`<span>Are you sure order is ready?</span>`);
+  const $completeButton = $(`<button class="complete-order">Complete Order</button>`);
 
   const $modalDialog = $("#modal-dialog");
   $modalDialog.append($modalForm);
   $modalDialog.dialog('option', 'title', 'Confirm Ready Order');
+  $modalDialog.data('state', 'ready');
 
   $modalDialog.dialog('option', 'buttons',
     {
       'Yes': () => {
-        $.post(`/orders/${id}/ready`, function() {
+        $.post(`/orders/${id}/ready`,
+        function() {
+          $('.content').data('$selectedOrder').find('.end-time').remove();
+          $('.content').data('$selectedOrder').find('.footer').append($completeButton);
+          $('.content').data('submit', 'ok');
+          $modalDialog.dialog('close');
+        });
+      },
+      'No': function() {
+        $(this).dialog('close');
+      }
+    }
+  );
+};
+
+const fillModalWithCompletePrompt = (id, $button) => {
+  console.log('fillModalWithCompletePrompt', $button);
+  const $modalForm = $(`
+    <input type="hidden" name="order-id" value="${id}">
+    <span>Complete Order?</span>
+  `);
+
+  const $modalDialog = $("#modal-dialog");
+  $modalDialog.append($modalForm);
+  $modalDialog.dialog('option', 'title', 'Confirm Complete Order');
+  $modalDialog.data('state', 'complete');
+
+  $modalDialog.dialog('option', 'buttons',
+    {
+      'Yes': () => {
+        $.post(`/orders/${id}/complete`,
+        function() {
+          $button.closest('.order').remove();
           $('.content').data('submit', 'ok');
           $modalDialog.dialog('close');
         });

@@ -9,6 +9,7 @@ const app = express();
 const morgan = require("morgan");
 const path = require('path');
 const cookieSession = require("cookie-session");
+const bodyParser = require('body-parser');
 
 // Database connection
 const db = require('./database');
@@ -35,18 +36,32 @@ app.use(
 );
 
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(bodyParser.json());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const ordersRoutes = require("./routes/orders");
-const foodsRoutes = require("./routes/foods");
+const userRoutes = require("./routes/users");
+const orderRoutes = require("./routes/orders");
+const foodRoutes = require("./routes/foods");
+const { cp } = require("fs");
+
+// User Router
+const userRouter = express.Router();
+userRoutes(userRouter, db);
+
+// Food Router
+const foodRouter = express.Router();
+foodRoutes(foodRouter, db);
+
+// Order Router
+const orderRouter = express.Router();
+orderRoutes(orderRouter, db);
 
 // Note: mount other resources here, using the same pattern above
 // Mount all resource routes
-app.use("/users", usersRoutes(db));
-app.use("/orders", ordersRoutes(db));
-app.use("/foods", foodsRoutes(db));
+app.use("/users", userRouter);
+app.use("/orders", foodRouter);
+app.use("/foods", orderRouter);
 
 // Home page
 // Warning: avoid creating more routes in this file!

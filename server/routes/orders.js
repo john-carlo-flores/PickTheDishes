@@ -13,14 +13,16 @@ const router  = express.Router();
 const moment = require('moment');
 const sendSMS = require('../send_sms.js');
 
-module.exports = (db) => {
+module.exports = (router, db) => {
   router.get("/", (req, res) => {
+    const userID = req.session.user_id;
+
     db.getAllOrdersNotPickedUp()
       .then(orders => {
         const orderStates = ['Pending', 'Preparing', 'Ready for Pickup'];
         reformatOrderDetails(orders);
 
-        const templateVars = { orders, orderStates};
+        const templateVars = { orders, orderStates, userID};
         res.render('orders', templateVars);
       })
       .catch(err => {
@@ -73,14 +75,28 @@ module.exports = (db) => {
     const order_id = Number(req.params.id);
     const state = getUpdateOrderState('Preparing');
 
-    console.log("/:id/ready", state);
-
     db.updateOrderStateById(order_id, state)
       .then(() => {
         //TODO: Send order ready for pickup to user
         const number = process.env.USER_NUMBER;
         const message = 'Your order is ready for pickup!';
         sendSMS(message, number);
+        res.send('Order Ready for Pickup!');
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.post("/:id/complete", (req, res) => {
+    const order_id = Number(req.params.id);
+    const state = getUpdateOrderState('Ready for Pickup');
+
+    db.updateOrderStateById(order_id, state)
+      .then(() => {
+        res.send('Order Complete!');
       })
       .catch(err => {
         res
