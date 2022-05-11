@@ -13,6 +13,8 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    const userID = req.session.user_id;
+
     db.getFoodsWithCategories()
       .then(foods => {
         // get category from data
@@ -22,10 +24,8 @@ module.exports = (db) => {
             categories.push(food.category)
           }
         }
-  // !!!!!!! need to work on roles_id !!!!!!!!!
-        // use cookies that store roles_id
-        const role_id = 2
-        const templateVars = { foods: foods, categories: categories, roles_id: role_id };
+
+        const templateVars = { foods, categories, userID};
         // res.header('token', JSON.stringify({ token: 'token' }));
 
         res.render("foods", templateVars)

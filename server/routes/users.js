@@ -9,7 +9,7 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/login/:id", (req, res) => {
+  router.post("/login/:id", (req, res) => {
     db.getUserWithId(req.params.id)
       .then(user => {
         if (user.length <= 0) {
@@ -34,7 +34,7 @@ module.exports = (db) => {
       });
   });
 
-  router.post('/logout', (res, req) => {
+  router.post('/logout', (req, res) => {
     req.session = null;
     res.redirect('/foods');
   });
