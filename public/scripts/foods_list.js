@@ -17,50 +17,8 @@ $(() => {
   //   return $('.modal-content').append($modal);
   // };
     // function to create order lists into cart
-    const createCartList = (data) => {
-      const $foodInCart = `
-        <div class="food-in-cart">
-          <div>
-            <p hidden class="food-id">${data.id}</p>
-            <p>${data.quantity}</p>
-            <p>${data.food}</p>
-          </div>
-          <div>
-            <p>$${data.price}</p>
-            <button class="delete">X</button>
-          </div>
-        </div>
-      `
-      return $foodInCart;
-    };
-
-    const renderCartLists = (items) => {
-      for (const item of items) {
-        const $cartList = createCartList(item);
-        $('.cart-list').append($cartList);
-      }
-    };
 
 
-  // when clicked, show food modal
-  const showItem = (elmId) => {
-    $.ajax({
-      url: `/foods/${elmId}`,
-      method: 'GET',
-    }).then((foods) => {
-      $('.modal-content').empty();
-      console.log('Before createModal')
-      createModal(foods);
-    })
-  }
-
-  const getTotal = (items) => {
-    let total = 0;
-    for (const item of items) {
-      total += item.price;
-    }
-    $('#total-price').text(`$${total}`);
-  }
 
   // open popup
   $('.food').on('click', function (event) {
@@ -197,20 +155,31 @@ $(() => {
   })
 
   $('.checkout-button').on('click', function() {
-    $('.order-confirm').removeClass('hidden');
-    const data = JSON.stringify(orderItems); // don't need in js
-    // console.log(data);
 
-    // stringfy
-    console.log(orderItems);
-    $.ajax({
-      url: '/orders',
-      method: 'POST',
-      data: data,
-      contentType: 'application/json'
-    })
-    // $.post('/foods/order', data )
-    // .then(() => console.log('Sent successfully!'));
+    // if user is not logged, show login first
+    const logged = $(this).siblings('.logged').text();
+    if (!logged) {
+      $('.not-logged').removeClass('hidden');
+    }
+
+    // if orderItems exist with logged user
+    if (logged) {
+      // if orderItems empty, show Cart is empty
+      if (orderItems.length === 0) {
+        $('.empty').removeClass('hidden');
+      } else {
+        $('.order-confirm').removeClass('hidden');
+        const data = JSON.stringify(orderItems); // don't need in js
+        console.log(orderItems);
+        $.ajax({
+          url: '/orders',
+          method: 'POST',
+          data: data,
+          contentType: 'application/json'
+        })
+      }
+    }
+
   });
 
 })

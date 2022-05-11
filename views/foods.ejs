@@ -36,7 +36,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-
     <!-- javascript -->
     <script src="/scripts/helper.js"></script>
     <script src="/scripts/foods_list.js"></script>
@@ -80,6 +79,9 @@
           <!-- dynamically created div will be added -->
         </div>
         <span>Total </span><span id="total-price">0</span><br />
+        <% if (user) {%>
+        <p hidden class="logged"><%= user.id %></p>
+        <% } %>
         <button type="submit" class="checkout-button">Checkout</button>
       </div>
     </div>
@@ -112,6 +114,7 @@
       </div>
     </div>
 
+    <!-- When logged, confirm order -->
     <div class="modal-background order-confirm hidden">
       <div class="modal">
         <div class="close-checkout-button">
@@ -129,6 +132,34 @@
           <div>
             <i class="fas fa-utensils"></i>
             <p>We will send you SMS when food is ready for pick-up</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- when not logged in -->
+    <div class="modal-background not-logged hidden">
+      <div class="modal">
+        <div class="close-checkout-button">
+          <button class="close">X</button>
+        </div>
+        <div class="modal-checkout">
+          <div>
+            <i class="fa-solid fa-circle-check"></i>
+            <p>Please Login First</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- when cart is empty -->
+    <div class="modal-background empty hidden">
+      <div class="modal">
+        <div class="close-checkout-button">
+          <button class="close">X</button>
+        </div>
+        <div class="modal-checkout">
+          <div>
+            <i class="fa-solid fa-circle-check"></i>
+            <p>Cart is empty! Please put items first</p>
           </div>
         </div>
       </div>
