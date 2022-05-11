@@ -56,8 +56,14 @@
         <h3 id="<%= category %>"><%= category %></h3>
         <% for(let food of foods) { if (food.category === category) {%>
         <div class="food" id="<%= food.id %>">
-          <h4><%= food.name %></h4>
-          <p>Price : $ <%= food.price %></p>
+          <div class="food-header">
+            <h4><%= food.name %></h4>
+            <div class="calories">
+              <p><i class="fa-solid fa-fire"></i> <%= food.calories %> </p>
+            </div>
+          </div>
+          <p>$<%= food.price %></p>
+
         </div>
         <% }} %> <% } %>
       </div>
@@ -66,22 +72,24 @@
         <div class="cart-list">
           <!-- dynamically created div will be added -->
         </div>
-        <span>Total :</span><span id="total-price">0</span><br />
+        <span>Total $</span><span id="total-price">0</span><br/>
         <button type="submit" class="checkout-button">Checkout</button>
       </div>
     </div>
     <!-- modal -->
     <div class="modal-background add-modal hidden">
       <div class="modal">
+        <div class="close-div">
+          <button class="close">X</button>
+        </div>
         <div class="modal-content"></div>
         <div class="quantity-btn">
           <button class="minus">-</button>
           <input type="text" value="1" />
           <button class="plus">+</button>
+          <button type="submit" class="add">Add</button>
         </div>
 
-        <button type="submit" class="add">Add</button>
-        <button class="close">Close</button>
       </div>
     </div>
     <!--update -->
@@ -100,16 +108,23 @@
 
     <div class="modal-background order-confirm hidden">
       <div class="modal">
-        <i class="fa-solid fa-circle-check"></i>
-        <p>Thank you for your order</p>
-
-        <div>
-          <i class="fa-solid fa-hourglass-empty"></i>
-          <p>Waiting time will be sent to you when the order is confirmed</p>
+        <div class="close-checkout-button">
+          <button class="close">X</button>
         </div>
-        <i class="fas fa-utensils"></i>
-        <p>We will send you SMS when food is ready for pick-up</p>
-        <button class="close">Close</button>
+        <div class="modal-checkout">
+          <div>
+            <i class="fa-solid fa-circle-check"></i>
+            <p>Thank you for your order</p>
+          </div>
+          <div>
+            <i class="fa-solid fa-hourglass-empty"></i>
+            <p>Waiting time will be sent to you when the order is confirmed</p>
+          </div>
+          <div>
+            <i class="fas fa-utensils"></i>
+            <p>We will send you SMS when food is ready for pick-up</p>
+          </div>
+        </div>
       </div>
     </div>
     <!-- javascript -->

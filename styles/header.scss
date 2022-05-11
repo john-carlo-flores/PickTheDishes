@@ -12,7 +12,12 @@
   padding-top: 2rem;
   width: 100vw;
   background-image: url("https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+  div {
 
+    a:hover {
+      color: #e60000
+    }
+  }
     a {
       text-decoration: none;
       font-family: 'Yellowtail', cursive;
@@ -38,14 +43,14 @@
 
     div {
       display: flex;
-      justify-content: end;
+      justify-content: space-between;
       align-items: center;
       font-size: 16px;
       font-family: 'Radio Canada', sans-serif;
       color: black;
       right: 0;
       top: 0;
-      width: 320px;
+      width: 270px;
       padding: 0 1rem;
 
       .logout-button {
@@ -58,15 +63,16 @@
       }
 
       .logout-button:hover {
-        background-color: #e60000
+        background-color: #e60000;
       }
 
       .login-button {
         @extend .logout-button;
+        margin-left: 12rem;
       }
 
       .login-button:hover {
-        background-color: #e60000
+        background-color: #e60000;
       }
 
     }
