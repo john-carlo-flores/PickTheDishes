@@ -54,23 +54,14 @@ module.exports = (db) => {
       });
   });
 
+  // pass order data to be saved in database
   router.post("/order", (req, res) => {
-    console.log('Sent!');
-    console.log(req.body);
-    // parse
+    const order = req.body;
 
     // user_id / cookies
-    const user_id = req.session.user_id
-    console.log(user_id);
-    // sendOrder(user_id)  // create order_id
+    const user_id = req.session.user_id;
 
-    // sendOrder()
-
-
-    // sendOrder
-    // sendFoodWitId (req.body)
-
-    //
+    db.sendOrder(user_id, order);
 
   })
 

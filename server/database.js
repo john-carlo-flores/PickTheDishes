@@ -104,34 +104,45 @@ module.exports = {
       });
   },
 
-  // send order after checkout
-  sendOrder: (order) => {
-    let time = Now();
-    let user = order.user_id;
+  sendFoodWithId: (orderArr, order_id) => {
+    let queryString;
+    for (const order of orderArr) {
+      let string = `INSERT INTO food_orders (food_id, order_id, quantity)
+      VALUES (${order.id}, ${order_id},${order.quantity});
+      `
+      queryString += string;
+    }
+    return pool
+      .query(queryString);
+  },
+
+  // send order to the database after checkout
+  sendOrder: (user_id, orderArr) => {
     return pool
       .query(`INSERT INTO orders (user_id, is_paid)
-      VALUES ($1, $2, $3)
+      VALUES ($1, $2)
       RETURNING *
-      `, [user,'true'])   //returning : passed to query data & generated data
+      `, [user_id, 'true'])   //returning : passed to query data & generated data
       .then(res => {
+        const order_id = res.rows[0].id
+        let queryString = `INSERT INTO food_orders (food_id, order_id, quantity)
+        VALUES `;
 
-        sendFoodWithId()
-        // what do I need to do with the response??????????!!!!!!!!!!!
-        console.log(res);
+        for (let i = 0; i < orderArr.length - 1; i++ ) {
+          let string = `(${orderArr[i].id}, ${order_id},${orderArr[i].quantity}), `
+          queryString += string;
+        }
+        const last = orderArr.length - 1;
+        queryString += `(${orderArr[last].id}, ${order_id},${orderArr[last].quantity});`
+        console.log(queryString);
+        return pool.query(queryString);
       })
       .catch(err => {
         console.log('Error: ', err.stack);
       })
-  },
-
-  sendFoodWithId: (order) => {
-
-    return pool
-      .query(`
-        INSERT INTO food_orders (food_id, order_id, quantity)
-        VALUES ($1, $2, $3)
-      `, [order.id, ])
   }
+
+
 
 };
 
