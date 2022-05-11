@@ -43,25 +43,24 @@ app.use(bodyParser.json());
 const userRoutes = require("./routes/users");
 const orderRoutes = require("./routes/orders");
 const foodRoutes = require("./routes/foods");
-const { cp } = require("fs");
 
 // User Router
 const userRouter = express.Router();
 userRoutes(userRouter, db);
+app.use("/users", userRouter);
 
 // Food Router
 const foodRouter = express.Router();
 foodRoutes(foodRouter, db);
+app.use("/foods", foodRouter);
 
 // Order Router
 const orderRouter = express.Router();
 orderRoutes(orderRouter, db);
+app.use("/orders", orderRouter);
 
 // Note: mount other resources here, using the same pattern above
 // Mount all resource routes
-app.use("/users", userRouter);
-app.use("/orders", foodRouter);
-app.use("/foods", orderRouter);
 
 // Home page
 // Warning: avoid creating more routes in this file!

@@ -199,7 +199,7 @@ $(() => {
     // stringfy
     console.log(orderItems);
     $.ajax({
-      url: '/foods/order',
+      url: '/orders',
       method: 'POST',
       data: data,
       contentType: 'application/json'

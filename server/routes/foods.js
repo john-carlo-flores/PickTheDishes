@@ -5,11 +5,6 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const req = require('express/lib/request');
-const { json } = require('express/lib/response');
-const { sendOrder } = require('../database');
-
 module.exports = function(router, db) {
   router.get("/", (req, res) => {
     const userID = req.session.user_id;
@@ -53,17 +48,6 @@ module.exports = function(router, db) {
           .json({ error: err.message });
       });
   });
-
-  // pass order data to be saved in database
-  router.post("/order", (req, res) => {
-    const order = req.body;
-
-    // user_id / cookies
-    const user_id = req.session.user_id;
-
-    db.sendOrder(user_id, order);
-
-  })
 
   return router;
 };

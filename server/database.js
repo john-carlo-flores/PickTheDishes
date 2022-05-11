@@ -116,8 +116,8 @@ module.exports = {
       .query(queryString);
   },
 
-  // send order to the database after checkout
-  sendOrder: (user_id, orderArr) => {
+  // create new order after checkout
+  createOrder: (user_id, orderArr) => {
     return pool
       .query(`INSERT INTO orders (user_id, is_paid)
       VALUES ($1, $2)
