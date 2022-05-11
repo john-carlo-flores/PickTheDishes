@@ -9,6 +9,7 @@ const app = express();
 const morgan = require("morgan");
 const path = require('path');
 const cookieSession = require("cookie-session");
+const bodyParser = require('body-parser');
 
 // Database connection
 const db = require('./database');
@@ -35,6 +36,7 @@ app.use(
 );
 
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(bodyParser.json());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own

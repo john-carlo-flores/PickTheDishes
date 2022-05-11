@@ -6,7 +6,9 @@
  */
 
 const express = require('express');
+const req = require('express/lib/request');
 const { json } = require('express/lib/response');
+const { sendOrder } = require('../database');
 const router  = express.Router();
 
 module.exports = (db) => {
@@ -52,9 +54,24 @@ module.exports = (db) => {
       });
   });
 
-  // add food to the cart if add button clicked
-  router.post("/", (req, res) => {
+  router.post("/order", (req, res) => {
+    console.log('Sent!');
     console.log(req.body);
+    // parse
+
+    // user_id / cookies
+    const user_id = req.session.user_id
+    console.log(user_id);
+    // sendOrder(user_id)  // create order_id
+
+    // sendOrder()
+
+
+    // sendOrder
+    // sendFoodWitId (req.body)
+
+    //
+
   })
 
   return router;
