@@ -21,11 +21,7 @@ module.exports = function(router, db) {
         }
 
         const templateVars = { foods, categories, userID};
-        // res.header('token', JSON.stringify({ token: 'token' }));
-
         res.render("foods", templateVars)
-        // res.json(foods);
-
       })
       .catch(err => {
         res
