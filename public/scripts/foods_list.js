@@ -65,8 +65,8 @@ $(() => {
     const $input = $(this).parent().find('input');
     const quantity = $input.val();
     const $food = $('.add-modal').find('.food-name').text();
-    const $price = $('.add-modal').find('.price').text();
-    const unitPrice = $price.split(" ")[1];
+    const $price = $('.add-modal').find('.price').text()
+    const unitPrice = $price.split(" ")[2];
     const sumPrice = unitPrice * quantity;
     const $id = $('.add-modal').find('.food-id').text();
 
