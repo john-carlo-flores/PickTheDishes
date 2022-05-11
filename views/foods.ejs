@@ -36,7 +36,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+    <!-- javascript -->
+    <script src="/scripts/helper.js"></script>
     <script src="/scripts/foods_list.js"></script>
+    <script src="/scripts/user.js"></script>
   </head>
   <body>
     <header class><%- include('partials/_header.ejs'); %></header>
@@ -59,11 +63,10 @@
           <div class="food-header">
             <h4><%= food.name %></h4>
             <div class="calories">
-              <p><i class="fa-solid fa-fire"></i> <%= food.calories %> </p>
+              <p><i class="fa-solid fa-fire"></i> <%= food.calories %></p>
             </div>
           </div>
           <p>$<%= food.price %></p>
-
         </div>
         <% }} %> <% } %>
       </div>
@@ -72,7 +75,7 @@
         <div class="cart-list">
           <!-- dynamically created div will be added -->
         </div>
-        <span>Total $</span><span id="total-price">0</span><br/>
+        <span>Total $</span><span id="total-price">0</span><br />
         <button type="submit" class="checkout-button">Checkout</button>
       </div>
     </div>
@@ -89,7 +92,6 @@
           <button class="plus">+</button>
           <button type="submit" class="add">Add</button>
         </div>
-
       </div>
     </div>
     <!--update -->
@@ -127,6 +129,5 @@
         </div>
       </div>
     </div>
-    <!-- javascript -->
   </body>
 </html>

@@ -6,8 +6,10 @@
  */
 
 module.exports = function(router, db) {
+
   router.get("/", (req, res) => {
     const userID = req.session.user_id;
+    console.log(`userID in /foods: `, userID)
     console.log('/foods', req.session);
 
     db.getFoodsWithCategories()
@@ -21,10 +23,8 @@ module.exports = function(router, db) {
         }
 
         const templateVars = { foods, categories, userID};
-        // res.header('token', JSON.stringify({ token: 'token' }));
 
         res.render("foods", templateVars)
-        // res.json(foods);
 
       })
       .catch(err => {

@@ -7,15 +7,15 @@ $(() => {
   let orderItem = {};
 
   // create modal
-  const createModal = (data) => {
-    const $modal = $(`
-          <p hidden class="food-id">${data.id}</p>
-          <h3 class="food-name">${data.name}</h3>
-          <p>${data.description}</p>
-          <p class="price">$ ${data.price}</p>
-    `)
-    return $('.modal-content').append($modal);
-  };
+  // const createModal = (data) => {
+  //   const $modal = $(`
+  //         <p hidden class="food-id">${data.id}</p>
+  //         <h3 class="food-name">${data.name}</h3>
+  //         <p>${data.description}</p>
+  //         <p class="price">$ ${data.price}</p>
+  //   `)
+  //   return $('.modal-content').append($modal);
+  // };
     // function to create order lists into cart
     const createCartList = (data) => {
       const $foodInCart = `
@@ -49,6 +49,7 @@ $(() => {
       method: 'GET',
     }).then((foods) => {
       $('.modal-content').empty();
+      console.log('Before createModal')
       createModal(foods);
     })
   }

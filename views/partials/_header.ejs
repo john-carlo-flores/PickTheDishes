@@ -9,7 +9,6 @@
 />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
 <header class="info-header-bar">
     <div class="header-logo">
       <p>PickTheDishes <i class="fa-solid fa-utensils"></i></p>
@@ -18,7 +17,10 @@
 
     <div>
       <% if (!userID) { %>
-        <form method="POST" action="/users/login/3"><button class="login-button">Login</button></form>
+        <form action="/users/login" method="POST" >
+          <input type="text" placeholder="Enter User Id" class="login-input" name="user_id">
+          <button type="submit" class="login-button">Login</button>
+        </form>
       <% } else { %>
         <img class="country-img"src="https://www.clipartmax.com/png/full/153-1538428_canada-flag-canada-flag-round-png.png" height="20px" width="20px">
         <img class="user-img"src="https://cdn-icons-png.flaticon.com/512/149/149071.png" height="20px" width="20px">
