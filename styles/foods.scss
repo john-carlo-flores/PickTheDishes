@@ -122,6 +122,11 @@ a {
     .add {
       width: 3rem;
       height: 1.5rem;
+      background-color: #292F36;
+    }
+
+    .add:hover {
+      background-color: black;
     }
 
     .plus {
@@ -131,10 +136,19 @@ a {
       text-align: center;
     }
 
+    .plus:hover {
+      background-color: #e60000;
+      cursor: pointer;
+    }
+
     .minus {
       width: 2rem;
       height: 1.5rem;
       text-align: center;
+    }
+    .minus:hover {
+      background-color: #e60000;
+      cursor: pointer;
     }
 
     input {
@@ -144,8 +158,6 @@ a {
       height: 1.5rem;
 
     }
-
-
 
   }
 
@@ -159,7 +171,12 @@ a {
     background-color: red;
     border: none;
     border-radius: 4px;
+    margin-top: -0.5rem;
+  }
 
+  button:hover {
+    background-color: #e60000;
+    cursor: pointer;
   }
 
   .close-checkout-button {
@@ -208,15 +225,23 @@ a {
 
 /* The Close Button */
 #add {
-  background-color: orange;
+
   float: left;
   font-weight: bold;
 }
 
 #close {
-  background-color: orange;
   float: right;
   font-weight: bold;
+}
+
+.total-cost {
+  border-top: 3px solid black;
+
+  #total-price{
+    margin-left: 67%;
+  }
+
 }
 
 .checkout-button {
@@ -237,7 +262,8 @@ a {
 }
 
 .checkout-button:hover {
-  background-color: #e60000
+  background-color: #e60000;
+  cursor: pointer;
 }
 
 .delete {
