@@ -6,7 +6,7 @@
  */
 const moment = require('moment');
 
-module.exports = (router, db) => {
+module.exports = function(router, db) {
   router.get("/", (req, res) => {
     const userID = req.session.user_id;
 

@@ -41,6 +41,7 @@ body {
   border-radius: 10px;
   background-color: white;
   font-family: 'Poppins', sans-serif;
+  cursor: pointer;
 
   .header {
     display: flex;
@@ -80,6 +81,11 @@ body {
       height: 30px;
       font-size: large;
       width: auto;
+
+      :hover {
+        background-color: blue;
+        cursor: pointer;
+      }
     }
 
   }

@@ -5,7 +5,7 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-module.exports = (router, db) => {
+module.exports = function(router, db) {
   router.post("/login/:id", (req, res) => {
     db.getUserWithId(req.params.id)
       .then(user => {

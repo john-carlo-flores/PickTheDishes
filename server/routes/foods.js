@@ -10,7 +10,7 @@ const req = require('express/lib/request');
 const { json } = require('express/lib/response');
 const { sendOrder } = require('../database');
 
-module.exports = (router, db) => {
+module.exports = function(router, db) {
   router.get("/", (req, res) => {
     const userID = req.session.user_id;
     console.log('/foods', req.session);
