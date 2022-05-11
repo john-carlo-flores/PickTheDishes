@@ -80,12 +80,12 @@ const undoDropEvent = function(event) {
 /// CLICK EVENTS
 
 const viewOrder = function(event) {
+  event.stopPropogation();
   const orderID = $(this).closest('.order').find('.order-id').text();
   const customerName = $(this).closest('.order').find('.full-name').text();
   fillModalWithFoodOrder(orderID, customerName);
   $("#modal-order").toggleClass("show-modal");
   $("#modal-order").data("show", "true");
-
 };
 
 const completeOrder = function(event) {
