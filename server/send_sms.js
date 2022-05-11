@@ -2,14 +2,20 @@
 // Find your Account SID and Auth Token at twilio.com/console
 // and set the environment variables. See http://twil.io/secure
 require("dotenv").config();
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
+const accountSid = process.env.TWILIO_ACCOUNT_SID
+const authToken = process.env.TWILIO_AUTH_TOKEN
 const client = require('twilio')(accountSid, authToken);
 
-client.messages
+
+const sendSMS = function(message, number) {
+  //message ='It will take this many minutes'
+  client.messages
   .create({
-    body: 'Your Delicious Food Order is ready for pickup!',
+    body: message,
     from: process.env.TWILIO_NUMBER,
-    to: process.env.TEST_NUMBER
+    to: number
   })
   .then(message => console.log(message.sid));
+}
+
+module.exports = sendSMS;
