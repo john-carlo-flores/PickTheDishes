@@ -16,8 +16,11 @@ module.exports = function(router, db) {
         const orderStates = ['Pending', 'Preparing', 'Ready for Pickup'];
         reformatOrderDetails(orders);
 
-        const templateVars = { orders, orderStates, userID};
-        res.render('orders', templateVars);
+        db.getUserWithId(userID)
+        .then(user => {
+          const templateVars = { orders, orderStates, userID, user};
+          res.render('orders', templateVars);
+        })
       })
       .catch(err => {
         res

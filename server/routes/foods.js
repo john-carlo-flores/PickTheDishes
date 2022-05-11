@@ -22,9 +22,12 @@ module.exports = function(router, db) {
           }
         }
 
-        const templateVars = { foods, categories, userID};
+        db.getUserWithId(userID)
+        .then( user => {
+          const templateVars = { foods, categories, userID, user};
+          res.render("foods", templateVars)
+        })
 
-        res.render("foods", templateVars)
 
       })
       .catch(err => {

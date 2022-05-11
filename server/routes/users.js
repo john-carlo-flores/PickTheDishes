@@ -25,7 +25,7 @@ module.exports = function(router, db) {
     req.session.user_id = user_id;
     db.getUserWithId(user_id)
       .then(user => {
-        console.log(user);
+        // console.log(user);
         if (!user) {
           return res.status(400).send('User doesnt exist. Go <a href="/">Back</a>');
         }
