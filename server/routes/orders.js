@@ -4,7 +4,14 @@
  *   these routes are mounted onto /users
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
+require("dotenv").config();
+const accountSid = process.env.TWILIO_ACCOUNT_SID
+const authToken = process.env.TWILIO_AUTH_TOKEN
+const client = require('twilio')(accountSid, authToken);
+const express = require('express');
+const router  = express.Router();
 const moment = require('moment');
+const sendSMS = require('../send_sms.js');
 
 module.exports = function(router, db) {
   router.get("/", (req, res) => {
@@ -25,6 +32,22 @@ module.exports = function(router, db) {
       });
   });
 
+  router.post('/', (req, res) => {
+    //Send order sms to restaurant
+    db.getUserWithId(req.session.user_id)
+      .then(user =>{
+        const userName = user.name;
+        const message = `${userName} has put in an order! Order ID:`;
+        const number = process.env.RESTAURANT_NUMBER;
+        sendSMS(message, number);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   router.post("/:id/prepare", (req, res) => {
     const order_id = Number(req.params.id);
     const state = getUpdateOrderState('Pending');
@@ -36,7 +59,10 @@ module.exports = function(router, db) {
     db.updateOrderStateAndPickupTimeById(order_id, state, pickupTime)
       .then(() => {
         //TODO: Send SMS estimated time to user
+        const message = `Estimated time for you order: ${estimatedTime} mins`;
+        const number = process.env.USER_NUMBER;
         res.send(`${estimatedTime} mins`);
+        sendSMS(message, number);
       })
       .catch(err => {
         res
@@ -52,6 +78,9 @@ module.exports = function(router, db) {
     db.updateOrderStateById(order_id, state)
       .then(() => {
         //TODO: Send order ready for pickup to user
+        const number = process.env.USER_NUMBER;
+        const message = 'Your order is ready for pickup!';
+        sendSMS(message, number);
         res.send('Order Ready for Pickup!');
       })
       .catch(err => {
