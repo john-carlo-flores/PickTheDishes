@@ -21,8 +21,16 @@ $(() => {
   });
 
   $('#modal-dialog').on('dialogclose', undoDropEvent);
-  $('.complete-order').on('click', completeOrder);
 
+  $('.order').on('click', viewOrder);
+  $('.complete-order').on('click', completeOrder);
+  $(document.body).on('click', '.close-button', closeFoodModal);
+  $(document.body).on('click', (event) => {
+    if (event.target === document.querySelector('#modal-order')) {
+      $('#modal-order').toggleClass("show-modal");
+      $('#modal-order').empty();
+    }
+  });
 });
 
 /// DROP EVENTS
@@ -71,10 +79,25 @@ const undoDropEvent = function(event) {
 
 /// CLICK EVENTS
 
+const viewOrder = function(event) {
+  const orderID = $(this).closest('.order').find('.order-id').text();
+  const customerName = $(this).closest('.order').find('.full-name').text();
+  fillModalWithFoodOrder(orderID, customerName);
+  $("#modal-order").toggleClass("show-modal");
+  $("#modal-order").data("show", "true");
+
+};
+
 const completeOrder = function(event) {
   const orderID = $(this).closest('.order').find('.order-id').text();
   fillModalWithCompletePrompt(orderID, $(this));
   $('#modal-dialog').dialog('open');
+};
+
+const closeFoodModal = function(event) {
+  $modalOrder = $("#modal-order");
+  $modalOrder.empty();
+  $modalOrder.toggleClass("show-modal");
 };
 
 /// DIALOG PROMPTS
@@ -142,7 +165,6 @@ const fillModalWithReadyPrompt = (id, completeButton) => {
 };
 
 const fillModalWithCompletePrompt = (id, $button) => {
-  console.log('fillModalWithCompletePrompt', $button);
   const $modalForm = $(`
     <input type="hidden" name="order-id" value="${id}">
     <span>Complete Order?</span>
@@ -168,4 +190,39 @@ const fillModalWithCompletePrompt = (id, $button) => {
       }
     }
   );
+};
+
+const fillModalWithFoodOrder = (id, customerName) => {
+  $.get(`/orders/${id}`,
+    function(foodList) {
+
+      const modalHeader = `
+        <div class="modal-content">
+          <span class="close-button">&times</span>
+          <div class="food-header">
+            <h3>${customerName}</h3>
+            <h3>${id}</h3>
+          </div>
+          <div class="table">
+      `;
+
+      let modalBody = '';
+
+      for(const food of foodList) {
+        modalBody += `
+            <div class="row">
+              <span>• ${food.name}</span>
+              <span class="quantity"> x ${food.quantity}</span>
+            </div>
+        `;
+      }
+
+      const modalFooter = `
+          </div>
+        </div>
+      `;
+
+      const $modalForm  = modalHeader + modalBody + modalFooter;
+      $("#modal-order").append($modalForm);
+    });
 };

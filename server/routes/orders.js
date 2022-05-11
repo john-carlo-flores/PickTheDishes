@@ -48,6 +48,20 @@ module.exports = function(router, db) {
       });
   });
 
+  router.get("/:id", (req, res) => {
+    const userID = req.session.user_id;
+
+    db.getAllFoodsByOrderId(req.params.id)
+      .then(foodList => {
+        res.send(foodList);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   router.post("/:id/prepare", (req, res) => {
     const order_id = Number(req.params.id);
     const state = getUpdateOrderState('Pending');

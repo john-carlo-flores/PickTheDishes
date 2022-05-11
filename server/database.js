@@ -28,6 +28,24 @@ module.exports = {
       });
   },
 
+  getAllFoodsByOrderId: (id) => {
+    const queryString = `
+    SELECT foods.name, food_orders.quantity
+    FROM foods
+    JOIN food_orders ON foods.id = food_id
+    WHERE order_id = $1;
+  `;
+
+  return pool
+    .query(queryString, [id])
+    .then(res => {
+      return res.rows || null;
+    })
+    .catch(err => {
+      console.log('Error:', err.stack);
+    });
+  },
+
   updateOrderStateAndPickupTimeById: (id, state, pickupTime) => {
     const queryString = `
       UPDATE orders

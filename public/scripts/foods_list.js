@@ -59,7 +59,7 @@ $(() => {
     for (const item of items) {
       total += item.price;
     }
-    $('#total-price').text(`${total}`);
+    $('#total-price').text(`$${total}`);
   }
 
   // open popup
