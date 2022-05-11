@@ -4,12 +4,9 @@
  *   these routes are mounted onto /users
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
-
-const express = require('express');
-const router  = express.Router();
 const moment = require('moment');
 
-module.exports = (db) => {
+module.exports = (router, db) => {
   router.get("/", (req, res) => {
     const userID = req.session.user_id;
 

@@ -9,11 +9,11 @@ const express = require('express');
 const req = require('express/lib/request');
 const { json } = require('express/lib/response');
 const { sendOrder } = require('../database');
-const router  = express.Router();
 
-module.exports = (db) => {
+module.exports = (router, db) => {
   router.get("/", (req, res) => {
     const userID = req.session.user_id;
+    console.log('/foods', req.session);
 
     db.getFoodsWithCategories()
       .then(foods => {

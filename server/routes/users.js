@@ -5,10 +5,7 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router  = express.Router();
-
-module.exports = (db) => {
+module.exports = (router, db) => {
   router.post("/login/:id", (req, res) => {
     db.getUserWithId(req.params.id)
       .then(user => {
@@ -17,7 +14,8 @@ module.exports = (db) => {
         }
 
         //req.session.role_id = user.role_id;
-        req.session.user_id = user.user_id;
+        req.session.user_id = user.id;
+        console.log(req.session);
 
         //if customer
         if (user.role_id === 1) {
