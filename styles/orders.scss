@@ -82,17 +82,12 @@ body {
       font-size: large;
       width: auto;
 
-      :hover {
+      &:hover {
         background-color: blue;
         cursor: pointer;
       }
     }
-
   }
-}
-
-.hover {
-  opacity: 0.4;
 }
 
 #modal-dialog {
