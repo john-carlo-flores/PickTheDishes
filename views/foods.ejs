@@ -22,6 +22,14 @@
       rel="stylesheet"
     />
 
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
       integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
@@ -59,7 +67,7 @@
           <!-- dynamically created div will be added -->
         </div>
         <span>Total :</span><span id="total-price">0</span><br />
-        <button class="checkout-button">Checkout</button>
+        <button type="submit" class="checkout-button">Checkout</button>
       </div>
     </div>
     <!-- modal -->
@@ -90,6 +98,20 @@
       </div>
     </div>
 
+    <div class="modal-background order-confirm hidden">
+      <div class="modal">
+        <i class="fa-solid fa-circle-check"></i>
+        <p>Thank you for your order</p>
+
+        <div>
+          <i class="fa-solid fa-hourglass-empty"></i>
+          <p>Waiting time will be sent to you when the order is confirmed</p>
+        </div>
+        <i class="fas fa-utensils"></i>
+        <p>We will send you SMS when food is ready for pick-up</p>
+        <button class="close">Close</button>
+      </div>
+    </div>
     <!-- javascript -->
   </body>
 </html>

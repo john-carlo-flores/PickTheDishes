@@ -54,7 +54,6 @@ $(() => {
     for (const item of items) {
       total += item.price;
     }
-    console.log(total);
     $('#total-price').text(`${total}`);
   }
 
@@ -147,7 +146,6 @@ $(() => {
   // change quantity in the cart
   $('.cart-list').on('click','.food-in-cart', function() {
     const $id = $(this).find('.food-id').text();
-    console.log($id);
     showItem($id);
     $('.update-modal').removeClass('hidden');
   })
@@ -192,4 +190,22 @@ $(() => {
     renderCartLists(orderItems);
     getTotal(orderItems);
   })
-});
+
+  $('.checkout-button').on('click', function() {
+    $('.order-confirm').removeClass('hidden');
+    const data = JSON.stringify(orderItems); // don't need in js
+    // console.log(data);
+
+    // stringfy
+    console.log(orderItems);
+    $.ajax({
+      url: '/foods/order',
+      method: 'POST',
+      data: data,
+      contentType: 'application/json'
+    })
+    // $.post('/foods/order', data )
+    // .then(() => console.log('Sent successfully!'));
+  });
+
+})

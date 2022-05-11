@@ -92,5 +92,37 @@ module.exports = {
       .catch(err => {
         console.log('Error:', err.stack);
       });
+  },
+
+  // send order after checkout
+  sendOrder: (order) => {
+    let time = Now();
+    let user = order.user_id;
+    return pool
+      .query(`INSERT INTO orders (user_id, is_paid)
+      VALUES ($1, $2, $3)
+      RETURNING *
+      `, [user,'true'])   //returning : passed to query data & generated data
+      .then(res => {
+
+        sendFoodWithId()
+        // what do I need to do with the response??????????!!!!!!!!!!!
+        console.log(res);
+      })
+      .catch(err => {
+        console.log('Error: ', err.stack);
+      })
+  },
+
+  sendFoodWithId: (order) => {
+
+    return pool
+      .query(`
+        INSERT INTO food_orders (food_id, order_id, quantity)
+        VALUES ($1, $2, $3)
+      `, [order.id, ])
   }
+
 };
+
+
