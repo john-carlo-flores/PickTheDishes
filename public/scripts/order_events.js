@@ -65,7 +65,7 @@ const handleDropEvent = function(event , ui) {
   }
 };
 
-const undoDropEvent = function(event) {
+const undoDropEvent = function() {
   $(this).empty(); // Clear dialog window
 
   if ($('#modal-dialog').data('state') === 'complete') return;
@@ -79,8 +79,7 @@ const undoDropEvent = function(event) {
 
 /// CLICK EVENTS
 
-const viewOrder = function(event) {
-  event.stopPropagation();
+const viewOrder = function() {
   const orderID = $(this).closest('.order').find('.order-id').text();
   const customerName = $(this).closest('.order').find('.full-name').text();
   fillModalWithFoodOrder(orderID, customerName);
@@ -89,12 +88,13 @@ const viewOrder = function(event) {
 };
 
 const completeOrder = function(event) {
+  event.stopPropagation();
   const orderID = $(this).closest('.order').find('.order-id').text();
   fillModalWithCompletePrompt(orderID, $(this));
   $('#modal-dialog').dialog('open');
 };
 
-const closeFoodModal = function(event) {
+const closeFoodModal = function() {
   $modalOrder = $("#modal-order");
   $modalOrder.empty();
   $modalOrder.toggleClass("show-modal");
@@ -137,7 +137,7 @@ const fillModalWithTimePrompt = (date, id) => {
   );
 };
 
-const fillModalWithReadyPrompt = (id, completeButton) => {
+const fillModalWithReadyPrompt = (id) => {
   const $modalForm = $(`<span>Are you sure order is ready?</span>`);
   const $completeButton = $(`<button class="complete-order">Complete Order</button>`);
 
