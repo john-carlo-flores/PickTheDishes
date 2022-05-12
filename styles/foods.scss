@@ -186,22 +186,29 @@ a {
   }
 
   .modal-checkout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
 
-      div {
-        display: flex;
-        flex-direction: row;
+    .fa-solid {
+      padding-top: 1rem;
+      padding-right: 0.5rem;
+    }
+
+    .fas {
+      padding-top: 1rem;
+      padding-right: 0.5rem;
+    }
 
 
-        .fa-solid {
-          padding-top: 1rem;
-          padding-right: 0.5rem;
-        }
-
-        .fas {
-          padding-top: 1rem;
-          padding-right: 0.5rem;
-        }
-      }
+    p {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 0;
+    text-align: center;
+    }
   }
 }
 
@@ -284,4 +291,28 @@ a {
 
 }
 
+.icon-success {
+  color: #34B233;
+  font-size: 3rem;
+}
 
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkout-words {
+  font-size: 1.3rem;
+}
+
+.icon-fail {
+  font-size: 3rem;
+  color: rgb(209,26,42);
+}
+
+.modal-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
