@@ -6,7 +6,6 @@
           <p>${data.description}</p>
           <p class="price">Price: $ ${data.price}</p>
     `)
-    console.log('CreateModal');
     return $('.modal-content').append($modal);
   };
 
@@ -43,7 +42,6 @@ const showItem = (elmId) => {
     method: 'GET',
   }).then((foods) => {
     $('.modal-content').empty();
-    console.log('Before createModal')
     createModal(foods);
   })
 }
