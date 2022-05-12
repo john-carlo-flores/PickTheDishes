@@ -9,8 +9,7 @@
   width: 100%;
   border: 0px solid black;
   background-image: url("https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
-
-
+  padding-top: 4rem;
 }
 
 .main-title {
@@ -42,8 +41,6 @@
   }
 }
 
-
-
 .main-order-button {
   border: 0px solid black;
   display: flex;
@@ -63,7 +60,7 @@
   border: 0px solid black;
   border-radius: 14px;
   background-color: red;
-
+  cursor: pointer;
 }
 
 .order-now-button:hover {
@@ -89,22 +86,22 @@
   margin-top: -1.50rem;
   color: white;
   font-family: 'Radio Canada', sans-serif;
-
 }
 
 .about-us {
-  border: 0px solid black;
   background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
   display: flex;
   align-items: center;
   flex-direction: column;
   max-height: 100vh;
+  padding:3rem;
 }
 
 .about-us-title {
   font-size: 60px;
   color: white;
-  font-family: 'Radio Canada', sans-serif;
+  font-family: "Radio Canada", sans-serif;
+  margin-top: 0;
 }
 
 .about-us-text {
@@ -126,16 +123,17 @@
   background-color: grey;
   width: 100vw;
   height: 750px;
+  padding: 3rem;
   border: 0px solid black;
   background-image: url("https://images.unsplash.com/photo-1617093727343-374698b1b08d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+
   .find-us {
     font-size: 60px;
     border: 0px solid black;
     color: white;
     font-family: 'Radio Canada', sans-serif;
-    margin: 2rem 0;
-
-  }
+    margin: 0 0 2rem 0;
+   }
 
   .address {
     font-size: 20px;
@@ -147,8 +145,6 @@
   .map-responsive iframe{
     min-width: 20vw;
     max-width: 100vw;
-
-
   }
 
 }
@@ -187,8 +183,6 @@
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
-
-
 }
 
 .hours-container {

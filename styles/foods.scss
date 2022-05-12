@@ -30,6 +30,9 @@ body {
   padding: 10px 20px;
   cursor: pointer;
 }
+.food:hover {
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+}
 
 .categories {
   position: sticky;
@@ -308,11 +311,5 @@ a {
 
 .icon-fail {
   font-size: 3rem;
-  color: rgb(209,26,42);
-}
-
-.modal-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: red;
 }
