@@ -44,6 +44,7 @@ body {
   margin-left: 2rem;
   margin-top: 2rem;
   border-radius: 14px;
+  font-size: larger;
 }
 
 ul {
@@ -258,8 +259,11 @@ a {
 .total-cost {
   border-top: 3px solid black;
   padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+
   #total-price{
-    margin-left: 64%;
+    margin-right: 2vw;
   }
 
 }
