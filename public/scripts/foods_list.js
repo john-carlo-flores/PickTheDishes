@@ -1,24 +1,7 @@
 $(() => {
-  // array of Objects
-  // e.g. [{id: 2, number:3}, {id: 3, number:1}]
-  // renderOrder functino like renderTweets
-  // update, add, delete call renderOrder()
+
   const orderItems = [];
   let orderItem = {};
-
-  // create modal
-  // const createModal = (data) => {
-  //   const $modal = $(`
-  //         <p hidden class="food-id">${data.id}</p>
-  //         <h3 class="food-name">${data.name}</h3>
-  //         <p>${data.description}</p>
-  //         <p class="price">$ ${data.price}</p>
-  //   `)
-  //   return $('.modal-content').append($modal);
-  // };
-    // function to create order lists into cart
-
-
 
   // open popup
   $('.food').on('click', function (event) {
@@ -116,12 +99,11 @@ $(() => {
   // update button will update quantity
   $('.update').on('click', function() {
     const modal = $(this).closest('.modal-background');
-
     const $input = $(this).parent().find('input');
     const quantity = $input.val();
     const $id = modal.find('.food-id').text();
     const $price = modal.find('.price').text();
-    const unitPrice = $price.split(" ")[1];
+    const unitPrice = $price.split(" ")[2];
 
     for (const item of orderItems) {
       if (item.id === $id) {
