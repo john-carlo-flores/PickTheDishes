@@ -55,7 +55,8 @@
       </div>
       <div class="order-section food-lists">
         <% for(let category of categories) {%>
-        <h3 id="<%= category %>"><%= category %></h3>
+        <div id="<%= category %>" class="blank"></div>
+        <h3><%= category %></h3>
         <% for(let food of foods) { if (food.category === category) {%>
         <div class="food" id="<%= food.id %>">
           <div class="food-header">
