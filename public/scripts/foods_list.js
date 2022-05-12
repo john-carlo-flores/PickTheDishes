@@ -13,6 +13,15 @@ $(() => {
     showItem(elmId);
   });
 
+  // const changeQunantity = function(num) {
+  //   let $input = $(this).parent().find('input');
+  //   console.log($(this));
+  //   let count = parseInt($input.val())
+  //   count = count < 1 ? 1 : count + num;
+  //   $input.val(count);
+  //   $input.change();
+  // }
+
   // minus button for quantity
   $('.minus').on('click', function() {
     let $input = $(this).parent().find('input');
@@ -47,6 +56,7 @@ $(() => {
     // added food data to make food-in-cart
     const $input = $(this).parent().find('input');
     const quantity = $input.val();
+    $input.val(1);
     const $food = $('.add-modal').find('.food-name').text();
     const $price = $('.add-modal').find('.price').text()
     const unitPrice = $price.split(" ")[2];
@@ -101,6 +111,7 @@ $(() => {
     const modal = $(this).closest('.modal-background');
     const $input = $(this).parent().find('input');
     const quantity = $input.val();
+    $input.val(1);
     const $id = modal.find('.food-id').text();
     const $price = modal.find('.price').text();
     const unitPrice = $price.split(" ")[2];
