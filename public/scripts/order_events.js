@@ -40,8 +40,6 @@ const handleDropEvent = function(event , ui) {
   const startTime = ui.draggable.find('.created-date').text();
   const state = ['Pending', 'Preparing', 'Ready for Pickup'];
 
-  console.log('handleDropEvent:', startTime);
-
   // Reference selected order and original parent
   $('.content').data('$selectedOrder', $(ui.draggable));
   $('.content').data('$previousParent', $('.content').data('$selectedOrder').parent());
@@ -80,7 +78,6 @@ const undoDropEvent = function() {
 /// CLICK EVENTS
 
 const viewOrder = function() {
-  console.log("VIEW ORDER");
   const orderID = $(this).closest('.order').find('.order-id').text();
   const customerName = $(this).closest('.order').find('.full-name').text();
   fillModalWithFoodOrder(orderID, customerName);
