@@ -23,7 +23,7 @@ $(() => {
   $('#modal-dialog').on('dialogclose', undoDropEvent);
 
   $('.order').on('click', viewOrder);
-  $('.complete-order').on('click', completeOrder);
+  $('.order').on('click', '.complete-order', completeOrder);
   $(document.body).on('click', '.close-button', closeFoodModal);
   $(document.body).on('click', (event) => {
     if (event.target === document.querySelector('#modal-order')) {
@@ -80,6 +80,7 @@ const undoDropEvent = function() {
 /// CLICK EVENTS
 
 const viewOrder = function() {
+  console.log("VIEW ORDER");
   const orderID = $(this).closest('.order').find('.order-id').text();
   const customerName = $(this).closest('.order').find('.full-name').text();
   fillModalWithFoodOrder(orderID, customerName);
@@ -88,6 +89,7 @@ const viewOrder = function() {
 };
 
 const completeOrder = function(event) {
+  console.log("COMPLETE ORDER");
   event.stopPropagation();
   const orderID = $(this).closest('.order').find('.order-id').text();
   fillModalWithCompletePrompt(orderID, $(this));

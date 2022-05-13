@@ -1,8 +1,8 @@
 INSERT INTO orders
   (user_id, created_date, is_paid, is_notified, is_ready, is_complete, pickup_time)
 VALUES
-  (2,  '2022-04-11 20:37:13', false, false, false, false, null),
-  (2,  '2022-04-30 11:58:50', true,  false, false, false, null),
+  (9,  '2022-04-11 20:37:13', false, false, false, false, null),
+  (8,  '2022-04-30 11:58:50', true,  false, false, false, null),
   (3,  '2022-03-26 11:42:18', true,  false, false, false, null),
   (5,  '2022-03-01 14:12:10', true,  true,  false, false, '2022-03-01 14:27:18'),
   (7,  '2022-04-25 11:21:28', true,  true,  false, false, '2022-04-25 11:41:55'),

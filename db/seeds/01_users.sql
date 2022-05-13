@@ -8,8 +8,8 @@ VALUES
 INSERT INTO users
   (name, email, password, phone, instagram, role_id)
 VALUES
-  ('Paulie Creagh', 'pcreagh0@simplemachines.org', 'password', '770-877-7891', 'pcreagh0', 2),
-  ('Bari Figgess', 'bfiggess1@jiathis.com', 'password', '377-115-2072', null, 1),
+  ('JC Flores', 'pcreagh0@simplemachines.org', 'password', '770-877-7891', 'pcreagh0', 2),
+  ('Heesoo Park', 'bfiggess1@jiathis.com', 'password', '377-115-2072', null, 1),
   ('Salvador McCallam', 'smccallam2@wsj.com', 'password', '299-211-3776', 'smccallam2', 1),
   ('Basilio Spours', 'bspours3@prlog.org', 'password', '175-766-8542', null, 3),
   ('Humfrid Hugle', 'hhugle4@opera.com', 'password', '504-758-4944', 'hhugle4', 1),
