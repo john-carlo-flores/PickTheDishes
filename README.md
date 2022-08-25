@@ -2,7 +2,7 @@
 ===============
 
 
-A SkipTheDishes clone made by Heeso, JC and Jason for our midterm project!
+A SkipTheDishes clone made by Heesoo, JC and Jason for our midterm project!
 
 
 ## Front Page
