@@ -3,6 +3,7 @@
 
 
 A SkipTheDishes clone made by Heesoo, JC and Jason for our midterm project!
+Live : https://pickthedishes.herokuapp.com/
 
 
 ## Front Page
