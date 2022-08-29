@@ -1,10 +1,10 @@
 # PickTheDishes
 ===============
 
+A restaurant order that enables customers to order foods and a restaurant's owner and staffs to manage orders easily. 
+By using Twilio API, a SMS notification will be sent to a restaurant's owner for new orders and customers also will get notified when their food is ready.
 
-A SkipTheDishes clone made by Heesoo, JC and Jason for our midterm project!
 Live : https://pickthedishes.herokuapp.com/
-
 
 ## Front Page
 
